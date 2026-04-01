@@ -1,5 +1,5 @@
 import React from 'react';
-// On importe l'image comme un module (Vite s'occupe du chemin)
+
 import logoInfranet from '../assets/images/logoHFF.jpg'; 
 
 const Header: React.FC = () => {
@@ -11,11 +11,10 @@ const Header: React.FC = () => {
         <img 
           src={logoInfranet} 
           alt="Logo Infranet" 
-          className="h-12 w-auto object-contain" // Garde la hauteur de 12 (comme ton ancien bloc)
+          className="h-12 w-auto object-contain" 
         />
       </div>
 
-      {/* Le Titre (inchangé car il est top) */}
       <h1 className="text-2xl font-extrabold tracking-widest text-gray-800 uppercase italic">
         ANNUAIRE
       </h1>

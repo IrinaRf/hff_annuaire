@@ -1,9 +1,9 @@
 import React from 'react';
-// On importe les icônes (n'oublie pas : npm install lucide-react)
+
 import { Search, FileSpreadsheet } from 'lucide-react';
 
 interface SearchBarProps {
-  // On adapte les props pour gérer les deux champs
+
   onSearchChange: (user: string, location: string) => void;
 }
 
