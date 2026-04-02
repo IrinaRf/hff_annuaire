@@ -11,11 +11,9 @@ const App: React.FC = () => {
   };
 
   return (
-    /* 'min-h-screen' pour que le gris couvre toute la hauteur de l'écran */
-    /* 'bg-workspace' (si configuré) ou simplement le fond par défaut de ton body */
+
     <div className="min-h-screen flex flex-col p-4 md:p-8">
       
-      {/* Conteneur principal pour limiter la largeur et centrer (optionnel) */}
       <div className="max-w-5xl mx-auto w-full space-y-6">
         
         {/* 1. Le Haut de page */}
