@@ -1,9 +1,8 @@
 @import "tailwindcss";
-@source "./src/**/*.{ts,tsx}";
 
 :root {
   --color-workspace: #f5f5f4; /* Couleur gris attenué */
-  --color-logo: #fbbb01;      /* Couleur jaune de l'entreprise */
+  --color-logo: #fbbb01;      /* Couleur jaune henri fraise */
 }
 
 @layer base {
