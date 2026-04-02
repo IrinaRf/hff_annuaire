@@ -6,7 +6,7 @@ const LdapList: React.FC = () => {
   const users = [
     { 
       id: 1, 
-      prenomNom: "JOHn DOE", 
+      prenomNom: "John DOE", 
       fonction: "Admin Réseau", 
       mail: "j.doet@infranet.fr", 
       tel: "+261 00 00 000 00", 
@@ -29,9 +29,9 @@ const LdapList: React.FC = () => {
       
       {/* Titre de la section */}
       <div className="bg-gray-50 p-4 border-b-2 border-infranet flex justify-between items-center">
-        <h2 className="font-black uppercase tracking-tighter text-lg text-gray-700">
+        {/* <h2 className="font-black uppercase tracking-tighter text-lg text-gray-700">
           Affichage des données LDAP
-        </h2>
+        </h2> */}
         <span className="text-[10px] bg-gray-200 px-2 py-1 font-bold rounded">
           {users.length} RÉSULTATS
         </span>

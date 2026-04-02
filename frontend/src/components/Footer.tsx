@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
         {/* Ligne du haut : Entreprise à gauche, Utilisateur à droite */}
         <div className="flex justify-between items-start font-bold uppercase tracking-tight text-gray-800">
           <div>
-            <span className="text-infranet text-xs block mb-1">Entreprise</span>
+            <span className="text-infranet text-xs block mb-1">SOCIETE</span>
             <p className="text-lg">HENRI FRAISE & Cie</p>
           </div>
           <div className="text-right">
