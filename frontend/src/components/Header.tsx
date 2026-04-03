@@ -17,7 +17,7 @@ const Header: React.FC = () => {
         setUserRole(user.role || (user.is_admin ? "ADMIN" : "COLLABORATEUR"));
       } catch (e) {
         setUserName(savedData);
-        setUserRole("COLLABORATEUR"); 
+        setUserRole("COLLABORATEUR"); // Par défaut si c'est du texte brut
       }
     }
   }, []);

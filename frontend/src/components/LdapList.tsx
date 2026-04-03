@@ -30,22 +30,40 @@ const LdapList: React.FC<LdapListProps> = ({ filters = defaultFilters }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!API_URL) {
-        setError("API_URL non configurée.");
-        setLoading(false);
-        return;
+  if (!API_URL) {
+    setError("API_URL non configurée.");
+    setLoading(false);
+    return;
+  }
+  try {
+    setLoading(true);
+
+    // On récupère le token depuis le localStorage
+    const token = localStorage.getItem('auth_token');
+
+    const response = await axios.get(API_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
       }
-      try {
-        setLoading(true);
-        const response = await axios.get(API_URL);
-        setUsers(response.data);
-        setLoading(false);
-      } catch (err) {
-        console.error("Erreur API:", err);
-        setError("Impossible de charger l'annuaire Active Directory.");
-        setLoading(false);
-      }
-    };
+    });
+
+    setUsers(response.data);
+    setLoading(false);
+  } catch (err: any) {
+    console.error("Erreur API:", err);
+
+    // Token expiré ou non valide → déconnexion automatique
+    if (err.response?.status === 401) {
+      localStorage.removeItem('auth_token');
+      localStorage.removeItem('user_data');
+      window.location.href = 'http://172.20.11.32/Hffintranet/logout'; 
+      return;
+    }
+
+    setError("Impossible de charger l'annuaire Active Directory.");
+    setLoading(false);
+  }
+};
     fetchData();
   }, []);
 
