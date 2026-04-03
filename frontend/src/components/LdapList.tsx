@@ -100,7 +100,7 @@ const LdapList: React.FC<LdapListProps> = ({ filters = defaultFilters }) => {
   const worksheet = workbook.addWorksheet('Annuaire');
 
   worksheet.columns = [
-    { header: 'Nom complet', key: 'fullname', width: 30 },
+    { header: 'Nom & Prénom', key: 'fullname', width: 30 },
     { header: 'Fonction', key: 'function', width: 25 },
     { header: 'Email', key: 'email', width: 35 },
     { header: 'Téléphone', key: 'landline', width: 20 },
