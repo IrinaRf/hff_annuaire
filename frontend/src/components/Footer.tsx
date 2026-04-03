@@ -1,34 +1,31 @@
 import React from 'react';
 
 const Footer: React.FC = () => {
-  const currentDate = new Date().toLocaleDateString();
+  const currentDate = new Date().toLocaleDateString('fr-FR');
 
   return (
     <footer className="mt-auto w-full bg-white border-t-2 border-black p-6">
       <div className="max-w-5xl mx-auto space-y-4">
         
-        {/* Ligne du haut : Entreprise à gauche, Utilisateur à droite */}
+        {/* Ligne du haut : Documentation à gauche */}
         <div className="flex justify-between items-start font-bold uppercase tracking-tight text-gray-800">
           <div>
-            <span className="text-infranet text-xs block mb-1">SOCIETE</span>
-            <p className="text-lg">HENRI FRAISE & Cie</p>
-          </div>
-          <div className="text-right">
-            <span className="text-gray-400 text-[10px] block mb-1 uppercase tracking-widest">Utilisateur actuel</span>
-            <p className="text-sm border-b-2 border-infranet pb-1">Nom de l'utilisateur</p>
+            <p className="text-xl tracking-tighter uppercase italic">Documentation</p>
+            <div className="mt-3 space-y-1 normal-case tracking-normal">
+              <div className="flex items-center gap-2 text-sm text-gray-600 font-medium hover:text-infranet cursor-pointer transition-colors">
+                <span className="w-1.5 h-1.5 bg-infranet rounded-full"></span>
+                Documentation technique
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-600 font-medium hover:text-infranet cursor-pointer transition-colors">
+                <span className="w-1.5 h-1.5 bg-gray-300 rounded-full"></span>
+                Documents utilisateurs
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Ligne du milieu*/}
-        <div className="pt-2">
-          <p className="text-gray-500 font-medium italic text-sm flex items-center gap-2">
-            <span className="w-2 h-2 bg-infranet rounded-full"></span>
-            Service Informatique
-          </p>
-        </div>
-
-        {/* Ligne du bas */}
-        <div className="pt-4 border-t border-gray-100 flex justify-between items-center text-[10px] text-gray-300 font-bold uppercase tracking-widest">
+        {/* Ligne du bas : Date et Copyright */}
+        <div className="pt-4 border-t border-gray-100 items-center text-[10px] text-gray-300 font-bold uppercase tracking-widest">
           <p>{currentDate}</p>
         </div>
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Search, RotateCcw, ChevronDown } from 'lucide-react';
 
 interface SearchBarProps {
-  // On met à jour l'interface pour accepter les 4 critères
+  // L'interface pour les props du SearchBar, avec une fonction de rappel pour les changements de recherche
   onSearchChange: (user: string, location: string, email: string, functionTitle: string) => void;
 }
 
@@ -24,7 +24,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange }) => {
     onSearchChange("", "", "", "");
   };
 
-  // Petite fonction pour déclencher la recherche à chaque frappe
+  // Fonction pour déclencher la recherche à chaque frappe
   const handleChange = (newUser: string, newLoc: string, newEmail: string, newFunc: string) => {
     onSearchChange(newUser, newLoc, newEmail, newFunc);
   };
@@ -32,7 +32,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange }) => {
   return (
     <div className="bg-white border border-gray-200 shadow-sm rounded-sm overflow-hidden text-left transition-all duration-300">
       
-      {/* 1. BANDEAU DE TITRE (JAUNE INFRANET) */}
+      {/* 1. BANDEAU DE TITRE */}
       <div 
         onClick={() => setIsOpen(!isOpen)}
         className="bg-infranet p-3 flex justify-between items-center cursor-pointer hover:brightness-95 transition-all"
@@ -53,7 +53,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange }) => {
       <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? 'max-h-125 opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="p-5 space-y-5">
           
-          {/* GRILLE À 4 COLONNES (md:grid-cols-4) */}
+          {/* GRILLE À 4 COLONNES */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             
             {/* Champ Utilisateur */}
@@ -76,7 +76,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange }) => {
               />
             </div>
 
-            {/* NOUVEAU : Champ Email */}
+            {/* Champ Email */}
             <div>
               <label className="block text-[10px] font-bold uppercase mb-1.5 text-gray-500 tracking-wider">Email</label>
               <input 
@@ -86,7 +86,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange }) => {
               />
             </div>
 
-            {/* NOUVEAU : Champ Fonction */}
+            {/* Champ Fonction */}
             <div>
               <label className="block text-[10px] font-bold uppercase mb-1.5 text-gray-500 tracking-wider">Fonction</label>
               <input 
