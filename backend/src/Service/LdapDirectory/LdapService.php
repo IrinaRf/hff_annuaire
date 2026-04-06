@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 class LdapService
 {
-    
+
     private $ldapconn;
 
     private string $host;
@@ -46,7 +46,7 @@ class LdapService
             throw new AuthenticationException('Failed to connect to LDAP server.');
         }
 
-        $bind = ldap_bind($this->ldapconn, $this->username.$this->domain, $this->password);
+        $bind = ldap_bind($this->ldapconn, $this->username . $this->domain, $this->password);
         if (!$bind) {
             throw new AuthenticationException('Failed to bind to LDAP server with provided credentials.');
         }
@@ -92,6 +92,15 @@ class LdapService
 
         for ($i = 0; $i < $entries['count']; $i++) {
             $entry = $entries[$i];
+
+            // Vérifier si le fullname contient "(IRIUM)" ou "test" (insensible à la casse)
+            $fullname = $entries[$i]["name"][0] ?? '';
+            $fullnameLower = strtolower($fullname);
+
+            if (strpos($fullnameLower, '(irium)') !== false || strpos($fullnameLower, 'test') !== false) {
+                continue; // Ignorer cette entrée
+            }
+
             if (isset($entry["givenname"][0])) {
 
                 $rawLoc = $entries[$i]["dn"];
@@ -100,7 +109,7 @@ class LdapService
                 $info = [
                     "firstname"             => $entries[$i]["sn"][0] ?? '',
                     "lastname"              => $entries[$i]["givenname"][0] ?? '',
-                    "fullname"              => $entries[$i]["name"][0],
+                    "fullname"              => $fullname,
                     "function"              => $entries[$i]["description"][0] ?? '',
                     "landline"              => $entries[$i]["physicaldeliveryofficename"][0] ?? '',
                     "phone"                 => $entries[$i]["telephonenumber"][0] ?? '',
