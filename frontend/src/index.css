@@ -1,0 +1,26 @@
+/* 1. TOUJOURS LES IMPORTS EN PREMIER */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Nandinagari&display=swap');
+@import "tailwindcss";
+
+/* 2. ENSUITE LE RESTE */
+:root {
+  --color-workspace: #f5f5f4;
+  --color-logo: #fbbb01;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-workspace);
+    color: #1a1a1a;
+    font-family: 'Noto Sans Nandinagari', sans-serif;
+    @apply antialiased;
+  }
+}
+
+
+
+@layer utilities {
+  .bg-infranet { background-color: var(--color-logo); }
+  .text-infranet { color: var(--color-logo); }
+  .border-infranet { border-color: var(--color-logo); }
+}
