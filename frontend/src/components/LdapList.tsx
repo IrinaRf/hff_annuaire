@@ -56,7 +56,8 @@ const LdapList: React.FC<LdapListProps> = ({ filters = defaultFilters }) => {
     if (err.response?.status === 401) {
       localStorage.removeItem('auth_token');
       localStorage.removeItem('user_data');
-      window.location.href = 'http://172.20.11.32/Hffintranet/logout'; 
+      const logoutUrl = import.meta.env.VITE_API_URL_LOGOUT ;
+      window.location.href = logoutUrl; 
       return;
     }
 
