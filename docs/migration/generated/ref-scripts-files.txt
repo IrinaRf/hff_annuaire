@@ -1,0 +1,14 @@
+ref/scripts/ajouter_import_basecontroller.php
+ref/scripts/benchmark_performance.php
+ref/scripts/convertir_display_en_response.php
+ref/scripts/corriger_controllers_specifiques.php
+ref/scripts/corriger_render_controllers.php
+ref/scripts/corriger_render_simple.php
+ref/scripts/corriger_session_service.php
+ref/scripts/migrate_controller.php
+ref/scripts/nettoyer_fichiers_dupliques.php
+ref/scripts/remplacer_references_static.php
+ref/scripts/remplacer_validator_global.php
+ref/scripts/simplifier_imports_controller.php
+ref/scripts/verifier_services_historique.php
+ref/scripts/verifier_services_historique_simple.php

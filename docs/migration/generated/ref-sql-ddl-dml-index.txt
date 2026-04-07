@@ -1,0 +1,560 @@
+ref/sql/generale.sql:8:ALTER TABLE <
+ref/sql/generale.sql:13:ALTER TABLE <
+ref/sql/generale.sql:26:INSERT INTO NouvelleTable SELECT \* FROM AncienneTable;
+ref/sql/generale.sql:41:ALTER TABLE < nom_du_table > DROP CONSTRAINT < nom_constraint >;
+ref/sql/generale.sql:50:CREATE TABLE [HFF_INTRANET_MAQUETTE].[dbo].[Personnel] (
+ref/sql/generale.sql:66:INSERT INTO [HFF_INTRANET_MAQUETTE].[dbo].[Personnel] (id, Matricule, Nom, Code_AgenceService_Sage, Numero_Compte_Bancaire , Prenoms , Qualification , agence_service_irium_id , societe, group_direction )
+ref/sql/COMPTA/bdc/bon_de_caisse.sql:1:CREATE TABLE Demande_de_bon_de_caisse
+ref/sql/COMPTA/bdc/bon_de_caisse.sql:22:ALTER TABLE Demande_de_bon_de_caisse ADD pdf_demande VARCHAR(MAX) NULL;
+ref/sql/COMPTA/bdc/bon_de_caisse.sql:23:ALTER TABLE Demande_de_bon_de_caisse ADD agence_emetteur VARCHAR(2) NULL;
+ref/sql/COMPTA/bdc/bon_de_caisse.sql:24:ALTER TABLE Demande_de_bon_de_caisse ADD service_emetteur VARCHAR(3) NULL;
+ref/sql/COMPTA/bdc/bon_de_caisse.sql:25:ALTER TABLE Demande_de_bon_de_caisse ADD nom_validateur_final VARCHAR(MAX) NULL;
+ref/sql/COMPTA/ddp/pdv.sql:1:CREATE TABLE type_demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:12:CREATE TABLE document_demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:23:CREATE TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:43:CREATE TABLE type_demande
+ref/sql/COMPTA/ddp/pdv.sql:52:INSERT INTO type_document
+ref/sql/COMPTA/ddp/pdv.sql:56:INSERT INTO applications
+ref/sql/COMPTA/ddp/pdv.sql:61:INSERT INTO type_demande
+ref/sql/COMPTA/ddp/pdv.sql:67:CREATE TABLE demande_paiement_ligne
+ref/sql/COMPTA/ddp/pdv.sql:80:ALTER TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:83:ALTER TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:86:ALTER TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:89:ALTER TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:92:ALTER TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:96:CREATE TABLE historique_statut_ddp
+ref/sql/COMPTA/ddp/pdv.sql:106:ALTER TABLE document_demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:109:ALTER TABLE document_demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:112:ALTER TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:115:ALTER TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:118:ALTER TABLE demande_paiement_ligne
+ref/sql/COMPTA/ddp/pdv.sql:121:ALTER TABLE document_demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:124:ALTER TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:127:ALTER TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:130:ALTER TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:133:ALTER TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:136:ALTER TABLE demande_paiement
+ref/sql/COMPTA/ddp/pdv.sql:139:ALTER TABLE demande_paiement
+ref/sql/admin/idemnite.sql:1:CREATE TABLE idemnite (
+ref/sql/admin/idemnite.sql:17:INSERT INTO
+ref/sql/admin/fonction.sql:1:CREATE TABLE fonctions (
+ref/sql/admin/fonction.sql:9:INSERT INTO
+ref/sql/admin/user.sql:1:ALTER TABLE users ADD fonction VARCHAR(255)
+ref/sql/admin/user.sql:3:ALTER TABLE users
+ref/sql/admin/user.sql:5:ALTER TABLE users
+ref/sql/admin/user.sql:8:CREATE TABLE users_agence_autoriser (
+ref/sql/admin/user.sql:16:CREATE TABLE agence_user (
+ref/sql/admin/user.sql:25:CREATE TABLE users_permission (
+ref/sql/admin/user.sql:33:UPDATE users
+ref/sql/admin/user.sql:49:ALTER TABLE users ADD societe_id INT
+ref/sql/admin/user.sql:51:UPDATE users
+ref/sql/admin/user.sql:58:UPDATE users
+ref/sql/admin/user.sql:75:UPDATE demande_intervention
+ref/sql/admin/user.sql:130:UPDATE users SET personnel_id = NULL WHERE personnel_id NOT IN (SELECT id FROM personnel);
+ref/sql/admin/catg.sql:1:CREATE TABLE catg (
+ref/sql/admin/catg.sql:11:INSERT INTO
+ref/sql/admin/rmq.sql:1:CREATE TABLE rmq (
+ref/sql/admin/rmq.sql:9:INSERT INTO
+ref/sql/admin/site.sql:1:CREATE TABLE site (
+ref/sql/admin/site.sql:9:INSERT INTO
+ref/sql/admin/role.sql:2:CREATE TABLE roles (
+ref/sql/admin/role.sql:11:CREATE TABLE role_permissions (
+ref/sql/admin/permission.sql:2:CREATE TABLE permissions (
+ref/sql/admin/permission.sql:11:CREATE TABLE users_permission (
+ref/sql/admin/personnel.sql:1:ALTER TABLE Personnel
+ref/sql/admin/personnel.sql:4:UPDATE Personnel
+ref/sql/admin/personnel.sql:8:ALTER TABLE Personnel ADD group_direction bit DEFAULT 0
+ref/sql/admin/application.sql:2:CREATE TABLE applications (
+ref/sql/admin/AgenceServiceIrium.sql:1:INSERT INTO Agence_Service_Irium (
+ref/sql/admin/AgenceServiceIrium.sql:14:ALTER TABLE Agence_Service_Irium
+ref/sql/historisation page utilisateur/Hff_pages.sql:1:CREATE TABLE Hff_pages (
+ref/sql/historisation page utilisateur/Log_utilisateur.sql:1:CREATE TABLE Log_utilisateur (
+ref/sql/historisation page utilisateur/Log_utilisateur.sql:11:ALTER TABLE Log_utilisateur
+ref/sql/historisation page utilisateur/Log_utilisateur.sql:15:ALTER TABLE Log_utilisateur
+ref/sql/historisation page utilisateur/Log_utilisateur.sql:19:ALTER TABLE Log_utilisateur
+ref/sql/magasin/bl/soumissionBl.sql:1:CREATE TABLE bl_soumission
+ref/sql/magasin/bl/soumissionBl.sql:14:ALTER TABLE bl_soumission ADD type_bl VARCHAR(50)
+ref/sql/magasin/devis/devisMagasin.sql:1:CREATE TABLE devis_soumis_a_validation_neg
+ref/sql/magasin/devis/devisMagasin.sql:21:ALTER TABLE devis_soumis_a_validation_neg
+ref/sql/magasin/devis/devisMagasin.sql:35:ALTER TABLE devis_soumis_a_validation_neg
+ref/sql/magasin/devis/devisMagasin.sql:39:CREATE TABLE pointage_relance
+ref/sql/magasin/devis/devisMagasin.sql:54:ALTER TABLE pointage_relance
+ref/sql/magasin/devis/devisMagasin.sql:58:ALTER TABLE devis_soumis_a_validation_neg 
+ref/sql/magasin/devis/devisMagasin.sql:66:ALTER TABLE pointage_relance 
+ref/sql/magasin/devis/devisMagasin.sql:72:CREATE TABLE historique_stop_reprise
+ref/sql/magasin/devis/devisMagasin.sql:93:        INSERT INTO historique_stop_reprise
+ref/sql/magasin/devis/devisNeg.sql:1:ALTER TABLE devis_soumis_a_validation_neg
+ref/sql/magasin/devis/BcNeg.sql:1:ALTER TABLE bc_client_soumis_neg 
+ref/sql/magasin/devis/BcMagasin.sql:1:CREATE TABLE bc_client_soumis_neg
+ref/sql/magasin/devis/BcMagasin.sql:17:ALTER TABLE bc_client_soumis_neg
+ref/sql/migration/migration.sql:11:UPDATE demande_intervention
+ref/sql/migration/migration.sql:29:UPDATE demande_intervention
+ref/sql/migration/migration.sql:88:UPDATE demande_intervention
+ref/sql/migration/migration.sql:106:UPDATE demande_intervention
+ref/sql/migration/migration.sql:159:    UPDATE demande_intervention
+ref/sql/migration/migration.sql:172: UPDATE demande_intervention
+ref/sql/profilUser/profilUser.sql:2:CREATE TABLE vignette (
+ref/sql/profilUser/profilUser.sql:12:ALTER TABLE applications ADD vignette_id INT NULL, CONSTRAINT FK_applications_vignette FOREIGN KEY (vignette_id) REFERENCES vignette (id);
+ref/sql/profilUser/profilUser.sql:15:ALTER TABLE applications ALTER COLUMN code_app VARCHAR(10) NULL; 
+ref/sql/profilUser/profilUser.sql:18:ALTER TABLE Hff_pages 
+ref/sql/profilUser/profilUser.sql:25:CREATE TABLE profil (
+ref/sql/profilUser/profilUser.sql:36:CREATE TABLE application_profil (
+ref/sql/profilUser/profilUser.sql:46:ALTER TABLE agence_service DROP CONSTRAINT PK_agence_service; -- ! Pour PROD UNIQUEMENT
+ref/sql/profilUser/profilUser.sql:49:ALTER TABLE agence_service 
+ref/sql/profilUser/profilUser.sql:56:CREATE TABLE application_profil_agence_service (
+ref/sql/profilUser/profilUser.sql:66:CREATE TABLE users_profils (
+ref/sql/profilUser/profilUser.sql:89:CREATE TABLE application_profil_page (
+ref/sql/profilUser/profilUser.sql:104:UPDATE users set 
+ref/sql/profilUser/profilUser.sql:131:INSERT INTO applications
+ref/sql/profilUser/profilUser.sql:219:INSERT INTO societe
+ref/sql/profilUser/profilUser.sql:228:INSERT INTO services
+ref/sql/profilUser/profilUser.sql:237:INSERT INTO agences
+ref/sql/MATERIEL/badm/badm.sql:1:ALTER TABLE Demande_Mouvement_Materiel
+ref/sql/MATERIEL/badm/badm.sql:3:ALTER TABLE Demande_Mouvement_Materiel
+ref/sql/MATERIEL/badm/badm.sql:5:ALTER TABLE Demande_Mouvement_Materiel
+ref/sql/MATERIEL/badm/badm.sql:7:ALTER TABLE Demande_Mouvement_Materiel
+ref/sql/MATERIEL/badm/badm.sql:10:UPDATE Demande_Mouvement_Materiel
+ref/sql/MATERIEL/badm/badm.sql:27:UPDATE Demande_Mouvement_Materiel
+ref/sql/MATERIEL/badm/badm.sql:78:UPDATE Demande_Mouvement_Materiel
+ref/sql/MATERIEL/badm/badm.sql:128:UPDATE Demande_Mouvement_Materiel
+ref/sql/MATERIEL/badm/badm.sql:314:UPDATE Demande_Mouvement_Materiel
+ref/sql/MATERIEL/casier/casier.sql:1:UPDATE Casier_Materiels_Temporaire
+ref/sql/MATERIEL/casier/casier.sql:18:ALTER TABLE Casier_Materiels_Temporaire ADD ID_Statut_Demande INT
+ref/sql/MATERIEL/casier/casier.sql:20:ALTER TABLE Casier_Materiels ADD ID_Statut_Demande INT
+ref/sql/MATERIEL/casier/casier.sql:22:UPDATE Casier_Materiels
+ref/sql/MATERIEL/casier/casier.sql:33:ALTER TABLE Casier_Materiels_Temporaire
+ref/sql/MATERIEL/casier/casier.sql:36:ALTER TABLE Casier_Materiels_Temporaire
+ref/sql/MATERIEL/casier/casier.sql:39:ALTER TABLE Casier_Materiels
+ref/sql/MATERIEL/casier/casier.sql:42:ALTER TABLE Casier_Materiels ALTER COLUMN Agence_Rattacher INT;
+ref/sql/tik/planning.sql:1:CREATE TABLE TKI_Planning (
+ref/sql/tik/planning.sql:15:CREATE TABLE TKI_Replannification (
+ref/sql/tik/planning.sql:30:ALTER TABLE TKI_Planning
+ref/sql/tik/planning.sql:34:ALTER TABLE TKI_Planning
+ref/sql/tik/planning.sql:38:ALTER TABLE TKI_Replannification
+ref/sql/tik/planning.sql:42:ALTER TABLE TKI_Replannification
+ref/sql/tik/planning.sql:46:ALTER TABLE TKI_Replannification
+ref/sql/tik/categorie.sql:5:INSERT INTO
+ref/sql/tik/categorie.sql:57:CREATE TABLE categorie_souscategorie (
+ref/sql/tik/categorie.sql:68:CREATE TABLE TKI_CATEGORIE (
+ref/sql/tik/agSrv.sql:1:CREATE TABLE Agence_service_autorise(
+ref/sql/tik/projet.sql:2:CREATE TABLE Projet_Informatique(
+ref/sql/tik/statut.sql:1:ALTER TABLE TKI_Statut_Ticket_Informatique
+ref/sql/tik/statut.sql:4:CREATE TABLE STATUT_DEMANDE(
+ref/sql/tik/statut.sql:13:INSERT INTO STATUT_DEMANDE (Code_Application, Code_Statut, Description, Date_creation, date_modification)
+ref/sql/tik/supportInfo.sql:1:CREATE TABLE Demande_Support_Informatique(
+ref/sql/tik/supportInfo.sql:40:ALTER TABLE Demande_Support_Informatique ADD Date_Fin_Souhaitee DATE
+ref/sql/tik/supportInfo.sql:42:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/supportInfo.sql:45:ALTER TABLE Demande_Support_Informatique ADD user_id INT
+ref/sql/tik/supportInfo.sql:47:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/supportInfo.sql:49:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/supportInfo.sql:51:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/supportInfo.sql:53:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/supportInfo.sql:60:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/supportInfo.sql:62:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/supportInfo.sql:65:UPDATE applications SET derniere_id = 'TIK24110000' where id = 7
+ref/sql/tik/supportInfo.sql:67:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/supportInfo.sql:69:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/supportInfo.sql:72:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/supportInfo.sql:75:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/supportInfo.sql:80:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/supportInfo.sql:83:ALTER TABLE Demande_Support_Informatique
+ref/sql/tik/sousCategorie.sql:5:ALTER TABLE TKI_SOUS_CATEGORIE ADD date_modification DATE
+ref/sql/tik/sousCategorie.sql:7:CREATE TABLE souscategorie_autrescategories (
+ref/sql/tik/sousCategorie.sql:18:ALTER TABLE TKI_SOUS_CATEGORIE ALTER COLUMN date_creation DATETIME2
+ref/sql/tik/sousCategorie.sql:20:CREATE TABLE TKI_SOUS_CATEGORIE (
+ref/sql/tik/statutTik.sql:1:CREATE TABLE TKI_Statut_Ticket_Informatique (
+ref/sql/tik/statutTik.sql:8:ALTER TABLE TKI_Statut_Ticket_Informatique ADD ID_Statut_Demande INT
+ref/sql/tik/autreCategorie.sql:5:ALTER TABLE TKI_Autres_Categorie ADD date_modification DATE
+ref/sql/tik/autreCategorie.sql:7:CREATE TABLE TKI_Autres_Categorie (
+ref/sql/tik/commentaire.sql:3:CREATE TABLE TkiCommentaires (
+ref/sql/tik/commentaire.sql:22:ALTER TABLE Demande_Support_Informatique
+ref/sql/cde/cde_fournisseur.sql:89:CREATE TABLE cdefnr_soumis_a_validation (
+ref/sql/cde/cde_fournisseur.sql:104:ALTER TABLE cdefnr_soumis_a_validation
+ref/sql/cde/cde_fournisseur.sql:107:INSERT INTO type_document(typeDocument, date_creation, date_modification, heure_creation, heure_modification, libelle_document)
+ref/sql/cde/cde_fournisseur.sql:110:INSERT INTO applications(nom, code_app, date_creation, date_modification)
+ref/sql/nouveau BDD/newBdd.sql:2:ALTER TABLE agences DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:3:ALTER TABLE agences ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:4:ALTER TABLE agences ADD CONSTRAINT PK_agences PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:6:ALTER TABLE applications DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:7:ALTER TABLE applications ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:8:ALTER TABLE applications ADD CONSTRAINT PK_applications PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:10:ALTER TABLE Casier_Materiels DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:11:ALTER TABLE Casier_Materiels ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:12:ALTER TABLE Casier_Materiels ADD CONSTRAINT PK_Casier_Materiels PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:14:ALTER TABLE Casier_Materiels_Temporaire DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:15:ALTER TABLE Casier_Materiels_Temporaire ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:16:ALTER TABLE Casier_Materiels_Temporaire ADD CONSTRAINT PK_Casier_Materiels_Temporaire PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:18:ALTER TABLE categorie_ate_app DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:19:ALTER TABLE categorie_ate_app ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:20:ALTER TABLE categorie_ate_app ADD CONSTRAINT PK_categorie_ate_app PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:22:ALTER TABLE catg DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:23:ALTER TABLE catg ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:24:ALTER TABLE catg ADD CONSTRAINT PK_catg PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:26:ALTER TABLE demande_intervention DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:27:ALTER TABLE demande_intervention ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:28:ALTER TABLE demande_intervention ADD CONSTRAINT PK_demande_intervention PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:30:ALTER TABLE demande_intervention_migration DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:31:ALTER TABLE demande_intervention_migration ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:32:ALTER TABLE demande_intervention_migration ADD CONSTRAINT PK_demande_intervention_migration PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:34:ALTER TABLE Demande_Mouvement_Materiel DROP COLUMN ID_Demande_Mouvement_Materiel;
+ref/sql/nouveau BDD/newBdd.sql:35:ALTER TABLE Demande_Mouvement_Materiel ADD ID_Demande_Mouvement_Materiel INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:36:ALTER TABLE Demande_Mouvement_Materiel ADD CONSTRAINT PK_Demande_Mouvement_Materiel PRIMARY KEY (ID_Demande_Mouvement_Materiel);
+ref/sql/nouveau BDD/newBdd.sql:38:ALTER TABLE Demande_ordre_mission DROP COLUMN ID_Demande_Ordre_Mission;
+ref/sql/nouveau BDD/newBdd.sql:39:ALTER TABLE Demande_ordre_mission ADD ID_Demande_Ordre_Mission INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:40:ALTER TABLE Demande_ordre_mission ADD CONSTRAINT PK_Demande_ordre_mission PRIMARY KEY (ID_Demande_Ordre_Mission);
+ref/sql/nouveau BDD/newBdd.sql:42:ALTER TABLE devis_soumis_a_validation DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:43:ALTER TABLE devis_soumis_a_validation ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:44:ALTER TABLE devis_soumis_a_validation ADD CONSTRAINT PK_devis_soumis_a_validation PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:46:ALTER TABLE facture_soumis_a_validation DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:47:ALTER TABLE facture_soumis_a_validation ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:48:ALTER TABLE facture_soumis_a_validation ADD CONSTRAINT PK_facture_soumis_a_validation PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:50:ALTER TABLE fonctions DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:51:ALTER TABLE fonctions ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:52:ALTER TABLE fonctions ADD CONSTRAINT PK_fonctions PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:54:ALTER TABLE Hff_pages DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:55:ALTER TABLE Hff_pages ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:56:ALTER TABLE Hff_pages ADD CONSTRAINT PK_Hff_pages PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:58:ALTER TABLE historique_operation_document DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:59:ALTER TABLE historique_operation_document ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:60:ALTER TABLE historique_operation_document ADD CONSTRAINT PK_historique_operation_document PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:62:ALTER TABLE idemnite DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:63:ALTER TABLE idemnite ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:64:ALTER TABLE idemnite ADD CONSTRAINT PK_idemnite PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:66:ALTER TABLE Idemnity DROP COLUMN ID_Idemnity;
+ref/sql/nouveau BDD/newBdd.sql:67:ALTER TABLE Idemnity ADD ID_Idemnity INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:68:ALTER TABLE Idemnity ADD CONSTRAINT PK_Idemnity PRIMARY KEY (ID_Idemnity);
+ref/sql/nouveau BDD/newBdd.sql:70:ALTER TABLE Log_utilisateur DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:71:ALTER TABLE Log_utilisateur ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:72:ALTER TABLE Log_utilisateur ADD CONSTRAINT PK_Log_utilisateur PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:74:ALTER TABLE mise_a_jour DROP COLUMN id_update;
+ref/sql/nouveau BDD/newBdd.sql:75:ALTER TABLE mise_a_jour ADD id_update INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:76:ALTER TABLE mise_a_jour ADD CONSTRAINT PK_mise_a_jour PRIMARY KEY (id_update);
+ref/sql/nouveau BDD/newBdd.sql:78:ALTER TABLE ors_soumis_a_validation DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:79:ALTER TABLE ors_soumis_a_validation ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:80:ALTER TABLE ors_soumis_a_validation ADD CONSTRAINT PK_ors_soumis_a_validation PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:82:ALTER TABLE permissions DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:83:ALTER TABLE permissions ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:84:ALTER TABLE permissions ADD CONSTRAINT PK_permissions PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:86:ALTER TABLE Personnel DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:87:ALTER TABLE Personnel ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:88:ALTER TABLE Personnel ADD CONSTRAINT PK_Personnel PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:90:ALTER TABLE Profil_User DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:91:ALTER TABLE Profil_User ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:92:ALTER TABLE Profil_User ADD CONSTRAINT PK_Profil_User PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:94:ALTER TABLE ri_soumis_a_validation DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:95:ALTER TABLE ri_soumis_a_validation ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:96:ALTER TABLE ri_soumis_a_validation ADD CONSTRAINT PK_ri_soumis_a_validation PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:98:ALTER TABLE rmq DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:99:ALTER TABLE rmq ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:100:ALTER TABLE rmq ADD CONSTRAINT PK_rmq PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:102:ALTER TABLE roles DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:103:ALTER TABLE roles ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:104:ALTER TABLE roles ADD CONSTRAINT PK_roles PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:106:ALTER TABLE secteur DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:107:ALTER TABLE secteur ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:108:ALTER TABLE secteur ADD CONSTRAINT PK_secteur PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:110:ALTER TABLE services DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:111:ALTER TABLE services ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:112:ALTER TABLE services ADD CONSTRAINT PK_services PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:114:ALTER TABLE site DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:115:ALTER TABLE site ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:116:ALTER TABLE site ADD CONSTRAINT PK_site PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:118:ALTER TABLE societe DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:119:ALTER TABLE societe ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:120:ALTER TABLE societe ADD CONSTRAINT PK_societe PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:122:ALTER TABLE Sous_type_document DROP COLUMN ID_Sous_Type_Document;
+ref/sql/nouveau BDD/newBdd.sql:123:ALTER TABLE Sous_type_document ADD ID_Sous_Type_Document INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:124:ALTER TABLE Sous_type_document ADD CONSTRAINT PK_Sous_type_document PRIMARY KEY (ID_Sous_Type_Document);
+ref/sql/nouveau BDD/newBdd.sql:126:ALTER TABLE Statut_demande DROP COLUMN ID_Statut_Demande;
+ref/sql/nouveau BDD/newBdd.sql:127:ALTER TABLE Statut_demande ADD ID_Statut_Demande INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:128:ALTER TABLE Statut_demande ADD CONSTRAINT PK_Statut_demande PRIMARY KEY (ID_Statut_Demande);
+ref/sql/nouveau BDD/newBdd.sql:130:ALTER TABLE type_document DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:131:ALTER TABLE type_document ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:132:ALTER TABLE type_document ADD CONSTRAINT PK_type_document PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:134:ALTER TABLE Type_Mouvement DROP COLUMN ID_Type_Mouvement;
+ref/sql/nouveau BDD/newBdd.sql:135:ALTER TABLE Type_Mouvement ADD ID_Type_Mouvement INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:136:ALTER TABLE Type_Mouvement ADD CONSTRAINT PK_Type_Mouvement PRIMARY KEY (ID_Type_Mouvement);
+ref/sql/nouveau BDD/newBdd.sql:138:ALTER TABLE type_operation DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:139:ALTER TABLE type_operation ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:140:ALTER TABLE type_operation ADD CONSTRAINT PK_type_operation PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:142:ALTER TABLE users DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:143:ALTER TABLE users ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:144:ALTER TABLE users ADD CONSTRAINT PK_users PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:146:ALTER TABLE wor_niveau_urgence DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:147:ALTER TABLE wor_niveau_urgence ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:148:ALTER TABLE wor_niveau_urgence ADD CONSTRAINT PK_wor_niveau_urgence PRIMARY KEY (id);
+ref/sql/nouveau BDD/newBdd.sql:150:ALTER TABLE wor_type_document DROP COLUMN id;
+ref/sql/nouveau BDD/newBdd.sql:151:ALTER TABLE wor_type_document ADD id INT IDENTITY(1,1) NOT NULL;
+ref/sql/nouveau BDD/newBdd.sql:152:ALTER TABLE wor_type_document ADD CONSTRAINT PK_wor_type_document PRIMARY KEY (id);
+ref/sql/migrationBDD/article réappro TRANSIT.sql:1:INSERT INTO HFF_INTRANET.dbo.da_article_reappro
+ref/sql/migrationBDD/article réappro TRANSIT.sql:25:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.da_article_reappro
+ref/sql/migrationBDD/article réappro TRANSIT.sql:33:INSERT INTO HFF_INTRANET.dbo.da_article_reappro
+ref/sql/migrationBDD/demande appro.sql:7:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.da_afficher
+ref/sql/migrationBDD/demande appro.sql:18:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.Demande_Appro
+ref/sql/migrationBDD/demande appro.sql:29:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.Demande_Appro_L
+ref/sql/migrationBDD/demande appro.sql:40:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.Demande_Appro_L_R
+ref/sql/migrationBDD/demande appro.sql:51:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.da_observation
+ref/sql/migrationBDD/demande appro.sql:62:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.da_soumission_bc
+ref/sql/migrationBDD/demande appro.sql:73:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.da_soumis_a_validation
+ref/sql/migrationBDD/demande appro.sql:84:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.da_soumission_facture_bl
+ref/sql/migrationBDD/demande appro.sql:95:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.ors_soumis_a_validation
+ref/sql/migrationBDD/demande appro.sql:106:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.demande_intervention
+ref/sql/migrationBDD/article réappro RH.sql:1:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.da_article_reappro
+ref/sql/migrationBDD/article réappro RH.sql:45:INSERT INTO HFF_INTRANET.dbo.da_article_reappro
+ref/sql/migrationBDD/article réappro IMMO.sql:1:INSERT INTO HFF_INTRANET.dbo.da_article_reappro
+ref/sql/migrationBDD/article réappro UMP.sql:1:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.da_article_reappro
+ref/sql/migrationBDD/article réappro UMP.sql:28:INSERT INTO HFF_INTRANET.dbo.da_article_reappro
+ref/sql/migrationBDD/article réappro FINANCE.sql:1:INSERT INTO HFF_INTRANET.dbo.da_article_reappro
+ref/sql/migrationBDD/article réappro DIR.sql:1:INSERT INTO HFF_INTRANET.dbo.da_article_reappro
+ref/sql/migrationBDD/article réappro DIR.sql:42:INSERT INTO HFF_INTRANET.dbo.da_article_reappro
+ref/sql/migrationBDD/all dw.sql:5:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.DW_BC_Appro
+ref/sql/migrationBDD/all dw.sql:15:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.DW_BC_Client
+ref/sql/migrationBDD/all dw.sql:25:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.DW_Commande
+ref/sql/migrationBDD/all dw.sql:35:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.DW_Demande_Intervention
+ref/sql/migrationBDD/all dw.sql:45:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.DW_Devis
+ref/sql/migrationBDD/all dw.sql:55:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.DW_FAC_BL
+ref/sql/migrationBDD/all dw.sql:65:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.DW_Facture
+ref/sql/migrationBDD/all dw.sql:75:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.DW_Ordre_De_Reparation
+ref/sql/migrationBDD/all dw.sql:85:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.DW_Rapport_Intervention
+ref/sql/migrationBDD/all dw.sql:90:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.DW_DA_Direct
+ref/sql/migrationBDD/all dw.sql:94:INSERT INTO HFF_INTRANET_TEST_TEST.dbo.DW_DA_Reappro
+ref/sql/migrationBDD/da réappro.sql:1:INSERT INTO HFF_INTRANET.dbo.da_article_reappro
+ref/sql/migrationBDD/da réappro.sql:10:UPDATE da_article_reappro
+ref/sql/migrationBDD/article réappro INFO.sql:1:INSERT INTO HFF_INTRANET.dbo.da_article_reappro
+ref/sql/dit/client_externe_dit/bc_soumis.sql:1:CREATE TABLE bc_soumis (
+ref/sql/dit/client_externe_dit/bc_soumis.sql:14:ALTER TABLE bc_soumis
+ref/sql/dit/client_externe_dit/bc_soumis.sql:17:INSERT INTO type_document(typeDocument, date_creation, date_modification, heure_creation, heure_modification, libelle_document)
+ref/sql/dit/client_externe_dit/bc_soumis.sql:20:ALTER TABLE users
+ref/sql/dit/client_externe_dit/bc_soumis.sql:23:ALTER TABLE users
+ref/sql/dit/client_externe_dit/bc_soumis.sql:27:CREATE TABLE contact_agence_ate (
+ref/sql/dit/client_externe_dit/bc_soumis.sql:35:ALTER TABLE contact_agence_ate
+ref/sql/dit/client_externe_dit/bc_soumis.sql:38:ALTER TABLE contact_agence_ate
+ref/sql/dit/client_externe_dit/bc_soumis.sql:41:ALTER TABLE contact_agence_ate
+ref/sql/dit/client_externe_dit/bc_soumis.sql:44:ALTER TABLE contact_agence_ate
+ref/sql/dit/client_externe_dit/bc_soumis.sql:47:ALTER TABLE contact_agence_ate
+ref/sql/dit/client_externe_dit/bc_soumis.sql:50:ALTER TABLE bc_soumis
+ref/sql/dit/client_externe_dit/devisSoumisAValidation.sql:1:CREATE TABLE devis_soumis_a_validation
+ref/sql/dit/client_externe_dit/devisSoumisAValidation.sql:21:ALTER TABLE devis_soumis_a_validation
+ref/sql/dit/client_externe_dit/devisSoumisAValidation.sql:38:ALTER TABLE demande_intervention
+ref/sql/dit/client_externe_dit/devisSoumisAValidation.sql:42:ALTER TABLE devis_soumis_a_validation
+ref/sql/dit/type_document.sql:2:INSERT INTO type_document (typeDocument, libelle_document, date_creation, heure_creation, date_modification, heure_modification)
+ref/sql/dit/orsSoumisAValidation.sql:1:CREATE TABLE ors_soumis_a_validation
+ref/sql/dit/orsSoumisAValidation.sql:19:ALTER TABLE ors_soumis_a_validation ADD societe INT
+ref/sql/dit/orsSoumisAValidation.sql:21:ALTER TABLE ors_soumis_a_validation
+ref/sql/dit/orsSoumisAValidation.sql:25:UPDATE ors_soumis_a_validation
+ref/sql/dit/orsSoumisAValidation.sql:31:CREATE TABLE type_document
+ref/sql/dit/orsSoumisAValidation.sql:40:ALTER TABLE type_document ADD libelle_document VARCHAR(255)
+ref/sql/dit/orsSoumisAValidation.sql:42:CREATE TABLE type_operation
+ref/sql/dit/orsSoumisAValidation.sql:51:CREATE TABLE historique_operation_document
+ref/sql/dit/orsSoumisAValidation.sql:160:ALTER TABLE type_operation ALTER COLUMN date_creation DATE;
+ref/sql/dit/orsSoumisAValidation.sql:162:ALTER TABLE type_operation ALTER COLUMN date_modification DATE;
+ref/sql/dit/orsSoumisAValidation.sql:164:ALTER TABLE type_operation
+ref/sql/dit/orsSoumisAValidation.sql:168:INSERT INTO
+ref/sql/dit/orsSoumisAValidation.sql:221:ALTER TABLE historique_operation_document
+ref/sql/dit/orsSoumisAValidation.sql:224:ALTER TABLE historique_operation_document
+ref/sql/dit/orsSoumisAValidation.sql:227:ALTER TABLE historique_operation_document ADD heure_operation TIME
+ref/sql/dit/orsSoumisAValidation.sql:229:CREATE TABLE or_soumis_validation_historique
+ref/sql/dit/orsSoumisAValidation.sql:241:ALTER TABLE historique_operation_document
+ref/sql/dit/orsSoumisAValidation.sql:244:ALTER TABLE historique_operation_document
+ref/sql/dit/orsSoumisAValidation.sql:247:ALTER TABLE ors_soumis_a_validation
+ref/sql/dit/orsSoumisAValidation.sql:250:ALTER TABLE ors_soumis_a_validation
+ref/sql/dit/cdeSoumisAValidation.sql:1:CREATE TABLE cde_soumis_a_validation (
+ref/sql/dit/wor_type_document.sql:1:INSERT INTO
+ref/sql/dit/wor_type_document.sql:15:INSERT INTO
+ref/sql/dit/riSoumisAValidation.sql:1:CREATE TABLE ri_soumis_a_validation (
+ref/sql/dit/dit.sql:1:ALTER TABLE demande_intervention ADD societe INT
+ref/sql/dit/dit.sql:3:ALTER TABLE demande_intervention ADD section_affectee VARCHAR(255)
+ref/sql/dit/dit.sql:5:ALTER TABLE demande_intervention ADD statut_or VARCHAR(255)
+ref/sql/dit/dit.sql:7:ALTER TABLE demande_intervention ADD statut_commande VARCHAR(255)
+ref/sql/dit/dit.sql:9:ALTER TABLE demande_intervention ADD date_validation_or DATE
+ref/sql/dit/dit.sql:11:ALTER TABLE demande_intervention
+ref/sql/dit/dit.sql:13:ALTER TABLE demande_intervention
+ref/sql/dit/dit.sql:15:ALTER TABLE demande_intervention
+ref/sql/dit/dit.sql:17:ALTER TABLE demande_intervention
+ref/sql/dit/dit.sql:20:UPDATE demande_intervention
+ref/sql/dit/dit.sql:38:UPDATE demande_intervention
+ref/sql/dit/dit.sql:91:UPDATE demande_intervention
+ref/sql/dit/dit.sql:109:UPDATE demande_intervention
+ref/sql/dit/dit.sql:162:UPDATE demande_intervention
+ref/sql/dit/dit.sql:170:UPDATE demande_intervention_migration
+ref/sql/dit/dit.sql:195:CREATE TABLE commentaire_dit_or (
+ref/sql/dit/dit.sql:207:ALTER TABLE demande_intervention ADD section_support_1 VARCHAR(255)
+ref/sql/dit/dit.sql:209:ALTER TABLE demande_intervention ADD section_support_2 VARCHAR(255)
+ref/sql/dit/dit.sql:211:ALTER TABLE demande_intervention ADD section_support_3 VARCHAR(255);
+ref/sql/dit/dit.sql:278:UPDATE demande_intervention
+ref/sql/dit/dit.sql:291:ALTER TABLE demande_intervention
+ref/sql/dit/dit.sql:294:ALTER TABLE demande_intervention
+ref/sql/dit/dit.sql:297:UPDATE wor_niveau_urgence
+ref/sql/dit/dit.sql:306:INSERT INTO
+ref/sql/dit/dit.sql:319:ALTER TABLE demande_intervention
+ref/sql/dit/dit.sql:324:UPDATE demande_intervention
+ref/sql/dit/dit.sql:381:ALTER TABLE demande_intervention
+ref/sql/dit/dit.sql:389:ALTER TABLE demande_intervention
+ref/sql/dit/dit.sql:396:UPDATE demande_intervention SET dit_avoir = 0
+ref/sql/dit/dit.sql:397:UPDATE demande_intervention SET dit_refacturation = 0
+ref/sql/dit/dit.sql:399:ALTER TABLE demande_intervention
+ref/sql/dit/dit.sql:401:UPDATE demande_intervention SET ate_pol_tana = 0
+ref/sql/dit/factureSoumiAValidation.sql:1:CREATE TABLE facture_soumis_a_validation (
+ref/sql/dit/factureSoumiAValidation.sql:17:ALTER TABLE facture_soumis_a_validation
+ref/sql/add_utilisateur_reprise_devis.sql:9:ALTER TABLE devis_soumis_a_validation_neg
+ref/sql/add_utilisateur_reprise_devis.sql:14:ALTER TABLE devis_soumis_a_validation_neg
+ref/sql/RH/ddc/DemandeConge.sql:1:CREATE TABLE demande_de_conge
+ref/sql/RH/dom/dom.sql:3:ALTER TABLE Demande_ordre_mission
+ref/sql/RH/dom/dom.sql:5:ALTER TABLE Demande_ordre_mission
+ref/sql/RH/dom/dom.sql:7:ALTER TABLE Demande_ordre_mission
+ref/sql/RH/dom/dom.sql:10:ALTER TABLE Demande_ordre_mission ADD site_id INT
+ref/sql/RH/dom/dom.sql:12:ALTER TABLE Demande_ordre_mission ADD category_id INT
+ref/sql/RH/dom/dom.sql:14:UPDATE Demande_ordre_mission
+ref/sql/RH/dom/dom.sql:25:ALTER TABLE Demande_ordre_mission
+ref/sql/RH/dom/dom.sql:28:UPDATE Personnel
+ref/sql/RH/dom/dom.sql:99:UPDATE Demande_ordre_mission
+ref/sql/RH/dom/dom.sql:112:UPDATE Demande_ordre_mission
+ref/sql/RH/dom/dom.sql:126:UPDATE Demande_ordre_mission
+ref/sql/RH/dom/dom.sql:176:UPDATE Demande_ordre_mission
+ref/sql/RH/dom/dom.sql:362:UPDATE Demande_ordre_mission
+ref/sql/RH/dom/dom.sql:379:UPDATE Demande_ordre_mission
+ref/sql/RH/dom/dom.sql:610:UPDATE Demande_ordre_mission
+ref/sql/RH/dom/dom.sql:618:ALTER TABLE Demande_ordre_mission ADD piece_justificatif bit DEFAULT 0;
+ref/sql/RH/dom/historique dom piece justificatif.sql:1:CREATE TABLE historique_dom_complement (
+ref/sql/RH/dom/trop perçu.sql:2:DELETE FROM Sous_type_document where ID_Sous_Type_Document='4';
+ref/sql/RH/dom/trop perçu.sql:4:INSERT INTO Sous_Type_Document (Code_Document, Code_Sous_Type, Date_creation)
+ref/sql/RH/dom/trop perçu.sql:7:INSERT INTO Idemnity (Catg, Destination, Rmq, Montant_idemnite, Type)
+ref/sql/RH/dom/trop perçu.sql:11:INSERT INTO idemnite(montant, site_id, catg_id, rmq_id, sousTypeDoc_id, date_creation, date_modification)
+ref/sql/RH/dom/trop perçu.sql:15:CREATE TABLE Demande_ordre_mission_tp (
+ref/sql/mutation.sql:1:CREATE TABLE Demande_de_mutation(
+ref/sql/mutation.sql:43:INSERT INTO STATUT_DEMANDE(
+ref/sql/DW/Bon de caisse/DW_Bon_de_caisse.sql:1:CREATE TABLE DW_Bon_de_caisse (
+ref/sql/DW/DA/DW_DA_Direct.sql:1:CREATE TABLE DW_DA_Direct (
+ref/sql/DW/DA/DW_DA_Reappro.sql:1:CREATE TABLE DW_DA_Reappro (
+ref/sql/DW/BC client magasin/DW_BC_Client_Negoce.sql:1:CREATE TABLE DW_BC_Client_Negoce (
+ref/sql/DW/DIT/DW_Fac_Bl.sql:2:CREATE TABLE DW_FAC_BL (
+ref/sql/DW/DIT/DW.sql:1:CREATE TABLE DW_Rapport_Intervention (
+ref/sql/DW/DIT/DW.sql:18:CREATE TABLE DW_Facture (
+ref/sql/DW/DIT/DW.sql:33:CREATE TABLE DW_Commande (
+ref/sql/DW/DIT/DW.sql:48:CREATE TABLE DW_Ordre_De_Reparation (
+ref/sql/DW/DIT/DW.sql:65:CREATE TABLE DW_Tiroir (
+ref/sql/DW/DIT/DW.sql:78:CREATE TABLE DW_Demande_Intervention (
+ref/sql/DW/DIT/DW.sql:125:ALTER TABLE DW_Demande_Intervention
+ref/sql/DW/DIT/DW.sql:127:ALTER TABLE DW_Tiroir
+ref/sql/DW/DIT/DW.sql:129:ALTER TABLE DW_Ordre_De_Reparation
+ref/sql/DW/DIT/DW.sql:131:ALTER TABLE DW_Rapport_intervention
+ref/sql/DW/DIT/DW.sql:133:ALTER TABLE DW_Commande
+ref/sql/DW/DIT/DW.sql:135:ALTER TABLE DW_Facture
+ref/sql/DW/DIT/DW.sql:138:ALTER TABLE DW_Facture ADD numero_or VARCHAR(8)
+ref/sql/DW/DIT/DW.sql:140:ALTER TABLE DW_Demande_Intervention ADD numero_dit_avoir VARCHAR(11)
+ref/sql/DW/DIT/DW.sql:141:ALTER TABLE DW_Demande_Intervention ADD numero_dit_refacturation VARCHAR(11)
+ref/sql/DW/DIT/DW.sql:142:ALTER TABLE DW_Demande_Intervention ADD dit_avoir bit DEFAULT 0
+ref/sql/DW/DIT/DW.sql:143:ALTER TABLE DW_Demande_Intervention ADD dit_refacturation bit DEFAULT 0
+ref/sql/DW/DIT/DW.sql:146:UPDATE DW_Demande_Intervention SET dit_avoir = 0
+ref/sql/DW/DIT/DW.sql:147:UPDATE DW_Demande_Intervention SET dit_refacturation = 0
+ref/sql/DW/DIT/DW_Bc_Appro.sql:2:CREATE TABLE DW_BC_Appro (
+ref/sql/DW/documentation_interne/docInterne.sql:1:CREATE TABLE DW_Processus_procedure (
+ref/sql/APPRO/da/demande appro L.sql:2:CREATE TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:27:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:30:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:33:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:36:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:39:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:42:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:45:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:48:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:51:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:54:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:57:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:60:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:63:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:66:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:69:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:72:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro L.sql:75:ALTER TABLE Demande_Appro_L
+ref/sql/APPRO/da/demande appro.sql:2:CREATE TABLE Demande_Appro
+ref/sql/APPRO/da/demande appro.sql:26:ALTER TABLE Demande_Appro 
+ref/sql/APPRO/da/demande appro.sql:29:ALTER TABLE Demande_Appro 
+ref/sql/APPRO/da/demande appro.sql:32:ALTER TABLE Demande_Appro
+ref/sql/APPRO/da/demande appro.sql:35:ALTER TABLE Demande_Appro
+ref/sql/APPRO/da/demande appro.sql:38:ALTER TABLE Demande_Appro
+ref/sql/APPRO/da/demande appro.sql:41:ALTER TABLE Demande_Appro ADD user_id INT;
+ref/sql/APPRO/da/demande appro.sql:43:ALTER TABLE Demande_Appro
+ref/sql/APPRO/da/demande appro.sql:47:ALTER TABLE Demande_Appro ADD validateur_id INT;
+ref/sql/APPRO/da/demande appro.sql:49:ALTER TABLE Demande_Appro
+ref/sql/APPRO/da/demande appro.sql:55:ALTER TABLE Demande_Appro
+ref/sql/APPRO/da/demande appro.sql:58:ALTER TABLE Demande_Appro
+ref/sql/APPRO/da/demande appro.sql:61:ALTER TABLE Demande_Appro
+ref/sql/APPRO/da/daListeCdeFnr.sql:1:ALTER TABLE cdefnr_soumis_a_validation
+ref/sql/APPRO/da/daListeCdeFnr.sql:4:ALTER TABLE cdefnr_soumis_a_validation
+ref/sql/APPRO/da/daListeCdeFnr.sql:7:ALTER TABLE cdefnr_soumis_a_validation
+ref/sql/APPRO/da/daSoumissionfacBl.sql:1:CREATE TABLE da_soumission_facture_bl
+ref/sql/APPRO/da/daSoumissionfacBl.sql:36:ALTER TABLE da_soumission_facture_bl ADD
+ref/sql/APPRO/da/daSoumissionfacBl.sql:41:UPDATE da_soumission_facture_bl
+ref/sql/APPRO/da/historique demande modif DA.sql:1:CREATE TABLE historique_demande_modif_DA (
+ref/sql/APPRO/da/daValider.sql:1:CREATE TABLE da_valider
+ref/sql/APPRO/da/daValider.sql:61:ALTER TABLE da_valider ADD jours_dispo int;
+ref/sql/APPRO/da/daValider.sql:63:ALTER TABLE da_valider ADD qte_en_attent int;
+ref/sql/APPRO/da/daValider.sql:65:ALTER TABLE da_valider ADD demandeur varchar(100);
+ref/sql/APPRO/da/daValider.sql:67:ALTER TABLE da_valider ADD id_da INT;
+ref/sql/APPRO/da/daValider.sql:69:ALTER TABLE da_valider ADD achat_direct BIT NOT NULL DEFAULT 0 WITH VALUES;
+ref/sql/APPRO/da/daValider.sql:71:ALTER TABLE da_valider ADD position_bc varchar(10);
+ref/sql/APPRO/da/daValider.sql:74:ALTER TABLE da_valider ADD date_planning_or DATETIME2(0);
+ref/sql/APPRO/da/daValider.sql:76:ALTER TABLE da_valider ADD or_a_resoumettre BIT DEFAULT 0;
+ref/sql/APPRO/da/daValider.sql:78:ALTER TABLE da_valider ADD numero_ligne_ips INT;
+ref/sql/APPRO/da/daValider.sql:81:UPDATE dv
+ref/sql/APPRO/da/daSoumissionBc.sql:1:CREATE TABLE da_soumission_bc
+ref/sql/APPRO/da/daSoumissionBc.sql:17:ALTER TABLE da_soumission_bc 
+ref/sql/APPRO/da/da Direct.sql:4:ALTER TABLE Demande_Appro DROP COLUMN devis_achat;
+ref/sql/APPRO/da/da Direct.sql:5:ALTER TABLE Demande_Appro_L DROP COLUMN art_rempl;
+ref/sql/APPRO/da/da Direct.sql:7:CREATE TABLE da_soumis_a_validation
+ref/sql/APPRO/da/daDemandeModification.sql:1:CREATE TABLE da_demande_modification
+ref/sql/APPRO/da/centrale NRJ.sql:1:CREATE TABLE centrale_nrj 
+ref/sql/APPRO/da/centrale NRJ.sql:9:ALTER TABLE Demande_Appro ADD code_centrale varchar(4) NULL;
+ref/sql/APPRO/da/centrale NRJ.sql:10:ALTER TABLE da_afficher ADD code_centrale varchar(4) NULL;
+ref/sql/APPRO/da/centrale NRJ.sql:12:ALTER TABLE Demande_Appro ADD designation_central varchar(50) NULL;
+ref/sql/APPRO/da/centrale NRJ.sql:13:ALTER TABLE da_afficher ADD designation_central varchar(50) NULL;
+ref/sql/APPRO/da/daAfficher.sql:1:CREATE TABLE da_afficher
+ref/sql/APPRO/da/daAfficher.sql:59:ALTER TABLE da_afficher DROP COLUMN id_da;
+ref/sql/APPRO/da/daAfficher.sql:61:ALTER TABLE da_afficher ADD 
+ref/sql/APPRO/da/daAfficher.sql:72:ALTER TABLE da_afficher ADD 
+ref/sql/APPRO/da/daAfficher.sql:79:ALTER TABLE da_afficher
+ref/sql/APPRO/da/daAfficher.sql:82:ALTER TABLE da_afficher
+ref/sql/APPRO/da/daAfficher.sql:86:INSERT INTO da_afficher
+ref/sql/APPRO/da/daAfficher.sql:120:UPDATE da
+ref/sql/APPRO/da/daAfficher.sql:129:ALTER TABLE da_afficher ADD numero_version_or_maj_statut INT NULL;
+ref/sql/APPRO/da/daAfficher.sql:130:ALTER TABLE da_afficher ADD date_derniere_bav DATETIME2(0) null;
+ref/sql/APPRO/da/daAfficher.sql:131:ALTER TABLE da_afficher ADD date_maj_statut_or DATETIME2(0) null;
+ref/sql/APPRO/da/daAfficher.sql:132:ALTER TABLE da_afficher ADD est_facture_bl_soumis bit DEFAULT 0;
+ref/sql/APPRO/da/daAfficher.sql:133:ALTER TABLE da_afficher ADD numero_intervention_ips INT;
+ref/sql/APPRO/da/daAfficher.sql:134:ALTER TABLE da_afficher ADD mail_envoye bit DEFAULT 0;
+ref/sql/APPRO/da/daAfficher.sql:135:ALTER TABLE da_afficher ADD non_dispo bit DEFAULT 0;
+ref/sql/APPRO/da/daAfficher.sql:136:ALTER TABLE da_afficher ADD est_bl_reappro_soumis bit DEFAULT 0;
+ref/sql/APPRO/da/daPicking.sql:1:CREATE TABLE da_picking
+ref/sql/APPRO/da/da reappro.sql:1:CREATE TABLE da_article_reappro 
+ref/sql/APPRO/da/da reappro.sql:16:ALTER TABLE Demande_Appro_L ADD qte_valide_appro int null;
+ref/sql/APPRO/da/da reappro.sql:18:ALTER TABLE Demande_Appro ADD da_type_id INT;
+ref/sql/APPRO/da/da reappro.sql:19:ALTER TABLE da_afficher ADD da_type_id INT;
+ref/sql/APPRO/da/da reappro.sql:21:UPDATE Demande_Appro SET da_type_id = achat_direct;
+ref/sql/APPRO/da/da reappro.sql:22:UPDATE da_afficher SET da_type_id = achat_direct;
+ref/sql/APPRO/da/da reappro.sql:24:ALTER TABLE Demande_Appro DROP COLUMN achat_direct; /* A la fin */
+ref/sql/APPRO/da/da reappro.sql:25:ALTER TABLE da_afficher DROP COLUMN achat_direct; /* A la fin */
+ref/sql/APPRO/da/daObservation.sql:2:CREATE TABLE da_observation
+ref/sql/APPRO/da/daObservation.sql:14:ALTER TABLE da_observation ADD file_names text;
+ref/sql/APPRO/da/demande appro L R.sql:2:CREATE TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:24:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:27:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:30:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:33:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:36:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:39:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:42:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:45:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:48:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:51:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:55:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:59:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:62:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:65:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:68:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:71:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:74:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:77:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/da/demande appro L R.sql:80:ALTER TABLE Demande_Appro_L_R
+ref/sql/APPRO/subdivision achat/demandeApproP.sql:1:CREATE TABLE Demande_Appro_P (
+ref/sql/APPRO/subdivision achat/demandeApproPL.sql:1:CREATE TABLE Demande_Appro_P_L (

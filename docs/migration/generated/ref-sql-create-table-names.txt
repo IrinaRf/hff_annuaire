@@ -1,0 +1,93 @@
+      1 ref/sql/tik/supportInfo.sql:1:CREATE TABLE Demande_Support_Informatique(
+      1 ref/sql/tik/statutTik.sql:1:CREATE TABLE TKI_Statut_Ticket_Informatique (
+      1 ref/sql/tik/statut.sql:4:CREATE TABLE STATUT_DEMANDE(
+      1 ref/sql/tik/sousCategorie.sql:7:CREATE TABLE souscategorie_autrescategories (
+      1 ref/sql/tik/sousCategorie.sql:20:CREATE TABLE TKI_SOUS_CATEGORIE (
+      1 ref/sql/tik/projet.sql:2:CREATE TABLE Projet_Informatique(
+      1 ref/sql/tik/planning.sql:1:CREATE TABLE TKI_Planning (
+      1 ref/sql/tik/planning.sql:15:CREATE TABLE TKI_Replannification (
+      1 ref/sql/tik/commentaire.sql:3:CREATE TABLE TkiCommentaires (
+      1 ref/sql/tik/categorie.sql:68:CREATE TABLE TKI_CATEGORIE (
+      1 ref/sql/tik/categorie.sql:57:CREATE TABLE categorie_souscategorie (
+      1 ref/sql/tik/autreCategorie.sql:7:CREATE TABLE TKI_Autres_Categorie (
+      1 ref/sql/tik/agSrv.sql:1:CREATE TABLE Agence_service_autorise(
+      1 ref/sql/RH/dom/trop perçu.sql:15:CREATE TABLE Demande_ordre_mission_tp (
+      1 ref/sql/RH/dom/historique dom piece justificatif.sql:1:CREATE TABLE historique_dom_complement (
+      1 ref/sql/RH/ddc/DemandeConge.sql:1:CREATE TABLE demande_de_conge
+      1 ref/sql/profilUser/profilUser.sql:89:CREATE TABLE application_profil_page (
+      1 ref/sql/profilUser/profilUser.sql:66:CREATE TABLE users_profils (
+      1 ref/sql/profilUser/profilUser.sql:56:CREATE TABLE application_profil_agence_service (
+      1 ref/sql/profilUser/profilUser.sql:36:CREATE TABLE application_profil (
+      1 ref/sql/profilUser/profilUser.sql:2:CREATE TABLE vignette (
+      1 ref/sql/profilUser/profilUser.sql:25:CREATE TABLE profil (
+      1 ref/sql/mutation.sql:1:CREATE TABLE Demande_de_mutation(
+      1 ref/sql/magasin/devis/devisMagasin.sql:72:CREATE TABLE historique_stop_reprise
+      1 ref/sql/magasin/devis/devisMagasin.sql:39:CREATE TABLE pointage_relance
+      1 ref/sql/magasin/devis/devisMagasin.sql:1:CREATE TABLE devis_soumis_a_validation_neg
+      1 ref/sql/magasin/devis/BcMagasin.sql:1:CREATE TABLE bc_client_soumis_neg
+      1 ref/sql/magasin/bl/soumissionBl.sql:1:CREATE TABLE bl_soumission
+      1 ref/sql/historisation page utilisateur/Log_utilisateur.sql:1:CREATE TABLE Log_utilisateur (
+      1 ref/sql/historisation page utilisateur/Hff_pages.sql:1:CREATE TABLE Hff_pages (
+      1 ref/sql/generale.sql:50:CREATE TABLE [HFF_INTRANET_MAQUETTE].[dbo].[Personnel] (
+      1 ref/sql/DW/documentation_interne/docInterne.sql:1:CREATE TABLE DW_Processus_procedure (
+      1 ref/sql/DW/DIT/DW.sql:78:CREATE TABLE DW_Demande_Intervention (
+      1 ref/sql/DW/DIT/DW.sql:65:CREATE TABLE DW_Tiroir (
+      1 ref/sql/DW/DIT/DW.sql:48:CREATE TABLE DW_Ordre_De_Reparation (
+      1 ref/sql/DW/DIT/DW.sql:33:CREATE TABLE DW_Commande (
+      1 ref/sql/DW/DIT/DW.sql:1:CREATE TABLE DW_Rapport_Intervention (
+      1 ref/sql/DW/DIT/DW.sql:18:CREATE TABLE DW_Facture (
+      1 ref/sql/DW/DIT/DW_Fac_Bl.sql:2:CREATE TABLE DW_FAC_BL (
+      1 ref/sql/DW/DIT/DW_Bc_Appro.sql:2:CREATE TABLE DW_BC_Appro (
+      1 ref/sql/DW/DA/DW_DA_Reappro.sql:1:CREATE TABLE DW_DA_Reappro (
+      1 ref/sql/DW/DA/DW_DA_Direct.sql:1:CREATE TABLE DW_DA_Direct (
+      1 ref/sql/DW/Bon de caisse/DW_Bon_de_caisse.sql:1:CREATE TABLE DW_Bon_de_caisse (
+      1 ref/sql/DW/BC client magasin/DW_BC_Client_Negoce.sql:1:CREATE TABLE DW_BC_Client_Negoce (
+      1 ref/sql/dit/riSoumisAValidation.sql:1:CREATE TABLE ri_soumis_a_validation (
+      1 ref/sql/dit/orsSoumisAValidation.sql:51:CREATE TABLE historique_operation_document
+      1 ref/sql/dit/orsSoumisAValidation.sql:42:CREATE TABLE type_operation
+      1 ref/sql/dit/orsSoumisAValidation.sql:31:CREATE TABLE type_document
+      1 ref/sql/dit/orsSoumisAValidation.sql:229:CREATE TABLE or_soumis_validation_historique
+      1 ref/sql/dit/orsSoumisAValidation.sql:1:CREATE TABLE ors_soumis_a_validation
+      1 ref/sql/dit/factureSoumiAValidation.sql:1:CREATE TABLE facture_soumis_a_validation (
+      1 ref/sql/dit/dit.sql:195:CREATE TABLE commentaire_dit_or (
+      1 ref/sql/dit/client_externe_dit/devisSoumisAValidation.sql:1:CREATE TABLE devis_soumis_a_validation
+      1 ref/sql/dit/client_externe_dit/bc_soumis.sql:27:CREATE TABLE contact_agence_ate (
+      1 ref/sql/dit/client_externe_dit/bc_soumis.sql:1:CREATE TABLE bc_soumis (
+      1 ref/sql/dit/cdeSoumisAValidation.sql:1:CREATE TABLE cde_soumis_a_validation (
+      1 ref/sql/COMPTA/ddp/pdv.sql:96:CREATE TABLE historique_statut_ddp
+      1 ref/sql/COMPTA/ddp/pdv.sql:67:CREATE TABLE demande_paiement_ligne
+      1 ref/sql/COMPTA/ddp/pdv.sql:43:CREATE TABLE type_demande
+      1 ref/sql/COMPTA/ddp/pdv.sql:23:CREATE TABLE demande_paiement
+      1 ref/sql/COMPTA/ddp/pdv.sql:1:CREATE TABLE type_demande_paiement
+      1 ref/sql/COMPTA/ddp/pdv.sql:12:CREATE TABLE document_demande_paiement
+      1 ref/sql/COMPTA/bdc/bon_de_caisse.sql:1:CREATE TABLE Demande_de_bon_de_caisse
+      1 ref/sql/cde/cde_fournisseur.sql:89:CREATE TABLE cdefnr_soumis_a_validation (
+      1 ref/sql/APPRO/subdivision achat/demandeApproP.sql:1:CREATE TABLE Demande_Appro_P (
+      1 ref/sql/APPRO/subdivision achat/demandeApproPL.sql:1:CREATE TABLE Demande_Appro_P_L (
+      1 ref/sql/APPRO/da/historique demande modif DA.sql:1:CREATE TABLE historique_demande_modif_DA (
+      1 ref/sql/APPRO/da/demande appro.sql:2:CREATE TABLE Demande_Appro
+      1 ref/sql/APPRO/da/demande appro L.sql:2:CREATE TABLE Demande_Appro_L
+      1 ref/sql/APPRO/da/demande appro L R.sql:2:CREATE TABLE Demande_Appro_L_R
+      1 ref/sql/APPRO/da/daValider.sql:1:CREATE TABLE da_valider
+      1 ref/sql/APPRO/da/daSoumissionfacBl.sql:1:CREATE TABLE da_soumission_facture_bl
+      1 ref/sql/APPRO/da/daSoumissionBc.sql:1:CREATE TABLE da_soumission_bc
+      1 ref/sql/APPRO/da/da reappro.sql:1:CREATE TABLE da_article_reappro 
+      1 ref/sql/APPRO/da/daPicking.sql:1:CREATE TABLE da_picking
+      1 ref/sql/APPRO/da/daObservation.sql:2:CREATE TABLE da_observation
+      1 ref/sql/APPRO/da/da Direct.sql:7:CREATE TABLE da_soumis_a_validation
+      1 ref/sql/APPRO/da/daDemandeModification.sql:1:CREATE TABLE da_demande_modification
+      1 ref/sql/APPRO/da/daAfficher.sql:1:CREATE TABLE da_afficher
+      1 ref/sql/APPRO/da/centrale NRJ.sql:1:CREATE TABLE centrale_nrj 
+      1 ref/sql/admin/user.sql:8:CREATE TABLE users_agence_autoriser (
+      1 ref/sql/admin/user.sql:25:CREATE TABLE users_permission (
+      1 ref/sql/admin/user.sql:16:CREATE TABLE agence_user (
+      1 ref/sql/admin/site.sql:1:CREATE TABLE site (
+      1 ref/sql/admin/role.sql:2:CREATE TABLE roles (
+      1 ref/sql/admin/role.sql:11:CREATE TABLE role_permissions (
+      1 ref/sql/admin/rmq.sql:1:CREATE TABLE rmq (
+      1 ref/sql/admin/permission.sql:2:CREATE TABLE permissions (
+      1 ref/sql/admin/permission.sql:11:CREATE TABLE users_permission (
+      1 ref/sql/admin/idemnite.sql:1:CREATE TABLE idemnite (
+      1 ref/sql/admin/fonction.sql:1:CREATE TABLE fonctions (
+      1 ref/sql/admin/catg.sql:1:CREATE TABLE catg (
+      1 ref/sql/admin/application.sql:2:CREATE TABLE applications (
