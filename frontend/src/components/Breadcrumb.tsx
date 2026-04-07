@@ -14,7 +14,7 @@ const Breadcrumb: React.FC = () => {
   href={HomePage}
   className="relative flex items-center gap-2 bg-[#1f2937] text-white pl-4 pr-8 py-2 text-[10px] font-bold uppercase tracking-widest cursor-pointer hover:bg-gray-700 transition-colors z-30 decoration-0"
   style={{ 
-    clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%)',
+    clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%)', // Forme de flèche pointant vers la droite
     textDecoration: 'none' // Pour éviter le soulignement par défaut des liens
   }}
 >
@@ -24,7 +24,7 @@ const Breadcrumb: React.FC = () => {
 
       {/* Annuaire — actif */}
       <div className="relative flex items-center gap-2 bg-[#fbbb01] text-gray-900 pl-8 pr-8 py-2 text-[10px] font-bold uppercase tracking-widest -ml-3 z-10 shadow-sm"
-        style={{ clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%)' }}
+        style={{ clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%)' }} // Forme de flèche pointant vers la droite, avec un petit "décroché" à gauche pour se connecter visuellement à l'onglet précédent
       >
         <span className="translate-y-px">Annuaire</span>
       </div>
