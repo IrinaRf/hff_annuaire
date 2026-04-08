@@ -57,7 +57,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-[--color-workspace]">
       <Header />
-      <div className="max-w-screen-2xl mx-auto w-full space-y-6 p-4 md:p-8 flex-grow">
+      <div className="max-w-screen-2xl mx-auto w-full space-y-6 p-4 md:p-8 grow">
         <Breadcrumb />
         <SearchBar onSearchChange={handleSearchChange} />
         <LdapList filters={filters} />

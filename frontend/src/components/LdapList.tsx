@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Mail, MapPin, Smartphone, Search, FileSpreadsheet, Loader2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Mail, MapPin, FileSpreadsheet, Loader2, ChevronLeft, ChevronRight } from 'lucide-react';
 import ExcelJS from 'exceljs';
 
 const ITEMS_PER_PAGE = 50;
