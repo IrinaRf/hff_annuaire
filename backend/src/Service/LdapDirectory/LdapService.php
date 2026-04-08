@@ -4,7 +4,7 @@ namespace App\Service\LdapDirectory;
 
 use Symfony\Component\Ldap\Ldap;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 class LdapService
 {
