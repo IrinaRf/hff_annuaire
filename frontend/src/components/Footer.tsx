@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Ligne du bas : Date et Copyright */}
+        {/* Ligne du bas : Date affichée dynamiquement */}
         <div className="pt-4 border-t border-gray-100 items-center text-[10px] text-gray-300 font-bold uppercase tracking-widest">
           <p>{currentDate}</p>
         </div>
