@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DirectoryController extends AbstractController
 {
     /**
-     * @Route("/directory", name="app_directory", methods={"GET"})
+     * @Route("/api/directory", name="app_directory", methods={"GET"})
      */
     public function index(LdapService $ldapService): JsonResponse
     {
@@ -23,7 +23,7 @@ class DirectoryController extends AbstractController
     }
 
     /**
-     * @Route("/directory/export.xlsx", name="app_directory_export", methods={"GET"})
+     * @Route("/api/directory/export.xlsx", name="app_directory_export", methods={"GET"})
      */
     public function export(LdapService $ldapService): Response
     {

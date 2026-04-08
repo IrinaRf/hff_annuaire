@@ -1,0 +1,98 @@
+ref/sql/add_utilisateur_reprise_devis.sql
+ref/sql/admin/AgenceServiceIrium.sql
+ref/sql/admin/application.sql
+ref/sql/admin/catg.sql
+ref/sql/admin/fonction.sql
+ref/sql/admin/idemnite.sql
+ref/sql/admin/permission.sql
+ref/sql/admin/personnel.sql
+ref/sql/admin/rmq.sql
+ref/sql/admin/role.sql
+ref/sql/admin/site.sql
+ref/sql/admin/user.sql
+ref/sql/APPRO/da/centrale NRJ.sql
+ref/sql/APPRO/da/da afficher ajout et suppression.sql
+ref/sql/APPRO/da/daAfficher.sql
+ref/sql/APPRO/da/daDemandeModification.sql
+ref/sql/APPRO/da/da Direct.sql
+ref/sql/APPRO/da/daListeCdeFnr.sql
+ref/sql/APPRO/da/daObservation.sql
+ref/sql/APPRO/da/daPicking.sql
+ref/sql/APPRO/da/da reappro.sql
+ref/sql/APPRO/da/daSoumissionBc.sql
+ref/sql/APPRO/da/daSoumissionfacBl.sql
+ref/sql/APPRO/da/daValider.sql
+ref/sql/APPRO/da/demande appro L R.sql
+ref/sql/APPRO/da/demande appro L.sql
+ref/sql/APPRO/da/demande appro.sql
+ref/sql/APPRO/da/historique demande modif DA.sql
+ref/sql/APPRO/subdivision achat/da afficher.sql
+ref/sql/APPRO/subdivision achat/demandeApproPL.sql
+ref/sql/APPRO/subdivision achat/demandeApproP.sql
+ref/sql/APPRO/subdivision achat/en general.sql
+ref/sql/atelierRealise/atelierRealise.sql
+ref/sql/cde/cde_fournisseur.sql
+ref/sql/COMPTA/bdc/bon_de_caisse.sql
+ref/sql/COMPTA/ddp/pdv.sql
+ref/sql/dit/cdeSoumisAValidation.sql
+ref/sql/dit/client_externe_dit/bc_soumis.sql
+ref/sql/dit/client_externe_dit/devisSoumisAValidation.sql
+ref/sql/dit/dit.sql
+ref/sql/dit/factureSoumiAValidation.sql
+ref/sql/dit/orsSoumisAValidation.sql
+ref/sql/dit/riSoumisAValidation.sql
+ref/sql/dit/type_document.sql
+ref/sql/dit/wor_type_document.sql
+ref/sql/DW/BC client magasin/DW_BC_Client_Negoce.sql
+ref/sql/DW/Bon de caisse/DW_Bon_de_caisse.sql
+ref/sql/DW/DA/DW_DA_Direct.sql
+ref/sql/DW/DA/DW_DA_Reappro.sql
+ref/sql/DW/DIT/DW_Bc_Appro.sql
+ref/sql/DW/DIT/DW_Fac_Bl.sql
+ref/sql/DW/DIT/DW.sql
+ref/sql/DW/documentation_interne/docInterne.sql
+ref/sql/exemple1.sql
+ref/sql/exemple2.sql
+ref/sql/exemplede.sql
+ref/sql/exemple.sql
+ref/sql/generale.sql
+ref/sql/historisation page utilisateur/Hff_pages.sql
+ref/sql/historisation page utilisateur/Log_utilisateur.sql
+ref/sql/magasin/bl/soumissionBl.sql
+ref/sql/magasin/devis/BcMagasin.sql
+ref/sql/magasin/devis/BcNeg.sql
+ref/sql/magasin/devis/devisMagasin.sql
+ref/sql/magasin/devis/devisNeg.sql
+ref/sql/magasin/magasinListeOrLivrer.sql
+ref/sql/MATERIEL/badm/badm.sql
+ref/sql/MATERIEL/casier/casier.sql
+ref/sql/migrationBDD/all dw.sql
+ref/sql/migrationBDD/article réappro DIR.sql
+ref/sql/migrationBDD/article réappro FINANCE.sql
+ref/sql/migrationBDD/article réappro IMMO.sql
+ref/sql/migrationBDD/article réappro INFO.sql
+ref/sql/migrationBDD/article réappro RH.sql
+ref/sql/migrationBDD/article réappro TRANSIT.sql
+ref/sql/migrationBDD/article réappro UMP.sql
+ref/sql/migrationBDD/da réappro.sql
+ref/sql/migrationBDD/demande appro.sql
+ref/sql/migration/migration.sql
+ref/sql/mutation.sql
+ref/sql/nouveau BDD/newBdd.sql
+ref/sql/planningPiece.sql
+ref/sql/profilUser/profilUser.sql
+ref/sql/requet/req07032025.sql
+ref/sql/RH/ddc/DemandeConge.sql
+ref/sql/RH/dom/dom.sql
+ref/sql/RH/dom/historique dom piece justificatif.sql
+ref/sql/RH/dom/trop perçu.sql
+ref/sql/tik/agSrv.sql
+ref/sql/tik/autreCategorie.sql
+ref/sql/tik/categorie.sql
+ref/sql/tik/commentaire.sql
+ref/sql/tik/planning.sql
+ref/sql/tik/projet.sql
+ref/sql/tik/sousCategorie.sql
+ref/sql/tik/statut.sql
+ref/sql/tik/statutTik.sql
+ref/sql/tik/supportInfo.sql

@@ -1,0 +1,10 @@
+controllers 210
+entities 137
+repositories 102
+services 131
+forms 121
+models 76
+validators 1
+sql_scripts 98
+views_files 641
+tests_files 49

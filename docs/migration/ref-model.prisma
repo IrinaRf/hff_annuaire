@@ -1,0 +1,183 @@
+// Modèle conceptuel de migration pour le legacy ref
+// Ce fichier sert de base de lecture et d’alignement métier.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Agence {
+  id        Int        @id @default(autoincrement())
+  code      String     @unique
+  libelle   String
+  services  Service[]
+  users     Utilisateur[]
+}
+
+model Service {
+  id        Int        @id @default(autoincrement())
+  code      String     @unique
+  libelle   String
+  agenceId  Int
+  agence    Agence     @relation(fields: [agenceId], references: [id])
+  users     Utilisateur[]
+}
+
+model Utilisateur {
+  id         Int      @id @default(autoincrement())
+  matricule  String   @unique
+  nom        String
+  prenom     String
+  email      String?
+  role       String
+  agenceId   Int
+  serviceId  Int?
+  agence     Agence   @relation(fields: [agenceId], references: [id])
+  service    Service? @relation(fields: [serviceId], references: [id])
+  demandes   DemandeIntervention[]
+}
+
+model DemandeIntervention {
+  id           Int                @id @default(autoincrement())
+  numeroDit    String             @unique
+  statut       String
+  description  String?
+  createdAt    DateTime           @default(now())
+  createurId   Int
+  createur     Utilisateur        @relation(fields: [createurId], references: [id])
+  devis        DevisMagasin[]
+  ors          OrSoumis[]
+  historiques  HistoriqueStatut[]
+}
+
+model DevisMagasin {
+  id               Int                 @id @default(autoincrement())
+  numeroDevis      String              @unique
+  statut           String
+  montantForfait   Decimal?            @db.Decimal(18, 2)
+  natureOperation  String?
+  ditId            Int
+  dit              DemandeIntervention @relation(fields: [ditId], references: [id])
+  bcs              BcSoumis[]
+  historiques      HistoriqueStatut[]
+}
+
+model BcSoumis {
+  id          Int           @id @default(autoincrement())
+  numeroBc    String        @unique
+  statut      String
+  devisId     Int
+  devis       DevisMagasin  @relation(fields: [devisId], references: [id])
+  historiques HistoriqueStatut[]
+}
+
+model OrSoumis {
+  id          Int                 @id @default(autoincrement())
+  numeroOr    String              @unique
+  statut      String
+  ditId       Int
+  dit         DemandeIntervention @relation(fields: [ditId], references: [id])
+  historiques HistoriqueStatut[]
+  pieces      OrPiece[]
+}
+
+model MagasinPiece {
+  id            Int             @id @default(autoincrement())
+  codePiece     String          @unique
+  libelle       String
+  stockActuel   Int             @default(0)
+  mouvements    StockMouvement[]
+  orPieces      OrPiece[]
+}
+
+model OrPiece {
+  id        Int          @id @default(autoincrement())
+  orId      Int
+  pieceId   Int
+  quantite  Int
+  or        OrSoumis     @relation(fields: [orId], references: [id])
+  piece     MagasinPiece @relation(fields: [pieceId], references: [id])
+}
+
+model StockMouvement {
+  id            Int          @id @default(autoincrement())
+  pieceId       Int
+  quantite      Int
+  typeMouvement String
+  createdAt     DateTime     @default(now())
+  piece         MagasinPiece @relation(fields: [pieceId], references: [id])
+}
+
+model HistoriqueStatut {
+  id          Int      @id @default(autoincrement())
+  entiteType  String
+  entiteId    Int
+  statut      String
+  createdAt   DateTime @default(now())
+}
+
+model DemandeOrdreMission {
+  id               Int      @id @default(autoincrement())
+  numeroDom        String   @unique
+  statut           String
+  agenceEmetteur   String?
+  serviceEmetteur  String?
+  createdAt        DateTime @default(now())
+}
+
+model DemandeConge {
+  id               Int      @id @default(autoincrement())
+  numeroDemande    String   @unique
+  matricule        String
+  statut           String
+  dateDebut        DateTime?
+  dateFin          DateTime?
+  createdAt        DateTime @default(now())
+}
+
+model Badm {
+  id               Int      @id @default(autoincrement())
+  numeroBadm       String   @unique
+  statut           String
+  agenceEmetteur   String?
+  serviceEmetteur  String?
+  createdAt        DateTime @default(now())
+}
+
+model TicketInformatique {
+  id               Int      @id @default(autoincrement())
+  numeroTicket     String   @unique
+  statut           String
+  categorie        String?
+  sousCategorie    String?
+  demandeur        String?
+  createdAt        DateTime @default(now())
+}
+
+model DemandePaiement {
+  id               Int      @id @default(autoincrement())
+  numeroDdp        String   @unique
+  statut           String
+  typeDemande      String?
+  createdAt        DateTime @default(now())
+}
+
+model DemandeBonDeCaisse {
+  id               Int      @id @default(autoincrement())
+  numeroBdc        String   @unique
+  statut           String
+  createdAt        DateTime @default(now())
+}
+
+model DwDocument {
+  id               Int      @id @default(autoincrement())
+  domaine          String
+  referenceMetier  String
+  typeDocument     String
+  statutSync       String?
+  createdAt        DateTime @default(now())
+}

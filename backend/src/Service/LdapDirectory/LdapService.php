@@ -2,132 +2,144 @@
 
 namespace App\Service\LdapDirectory;
 
+use Symfony\Component\Ldap\Ldap;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 
 class LdapService
 {
 
-    private $ldapconn;
-
-    private string $host;
-    private int $port;
+    private Ldap $ldap;
+    private bool $bound = false;
 
     private string $domain;
     private string $baseDn;
     private string $username;
     private string $password;
 
-    public function __construct()
-    {
-
-        $this->initEnv();
-        $this->connect();
-    }
-
-    private function initEnv()
-    {
-        $this->host = $_ENV['LDAP_HOST'] ?? 'localhost';
-        $this->port = $_ENV['LDAP_PORT'] ?? '389';
-
-        $this->domain = $_ENV['LDAP_DOMAIN'] ?? '@fraise.hff.mg';
-        $this->baseDn = $_ENV['LDAP_BASE_DN'] ?? 'DC=fraise,DC=hff,DC=mg';
-        $this->username = $_ENV['LDAP_USER'] ?? '';
-        $this->password = $_ENV['LDAP_PASSWORD'] ?? '';
+    public function __construct(
+        Ldap $ldap,
+        string $domain,
+        string $baseDn,
+        string $username,
+        string $password
+    ) {
+        $this->ldap = $ldap;
+        $this->domain = $domain;
+        $this->baseDn = $baseDn;
+        $this->username = $username;
+        $this->password = $password;
     }
 
     private function connect(): void
     {
-        $this->ldapconn = ldap_connect($this->host, $this->port);
-        ldap_set_option($this->ldapconn, LDAP_OPT_PROTOCOL_VERSION, 3);
-        ldap_set_option($this->ldapconn, LDAP_OPT_REFERRALS, 0);
-
-        if (!$this->ldapconn) {
-            throw new AuthenticationException('Failed to connect to LDAP server.');
+        if ($this->bound) {
+            return;
         }
 
-        $bind = ldap_bind($this->ldapconn, $this->username . $this->domain, $this->password);
-        if (!$bind) {
-            throw new AuthenticationException('Failed to bind to LDAP server with provided credentials.');
+        $identities = $this->buildBindIdentities($this->username);
+        $lastError = null;
+
+        foreach ($identities as $identity) {
+            try {
+                $this->ldap->bind($identity, $this->password);
+                $this->bound = true;
+
+                return;
+            } catch (\Exception $e) {
+                $lastError = $e;
+            }
         }
+
+        throw new AuthenticationException(
+            'Impossible de se connecter au serveur LDAP. Identités testées: ' . implode(', ', $identities)
+            . '. Dernière erreur: ' . ($lastError ? $lastError->getMessage() : 'Erreur inconnue')
+        );
     }
 
-    public function authenticate(string $username, string $password): bool
+    /**
+     * Construit plusieurs formats d'identité LDAP/AD à partir du nom d'utilisateur configuré.
+     */
+    private function buildBindIdentities(string $username): array
+    {
+        $username = trim($username);
+        $domain = trim($this->domain);
+
+        if ($username === '') {
+            return [''];
+        }
+
+        if (str_contains($username, '=') || str_contains($username, '@') || str_contains($username, '\\')) {
+            return [$username];
+        }
+
+        $domainNoAt = ltrim($domain, '@');
+        $domainNetbios = strtoupper((string) strtok($domainNoAt, '.'));
+
+        return array_values(array_unique(array_filter([
+            $username,
+            $domainNoAt !== '' ? $username . '@' . $domainNoAt : null,
+            $domainNetbios !== '' ? $domainNetbios . '\\' . $username : null,
+            'cn=' . $username . ',' . $this->baseDn,
+        ])));
+    }
+
+    public function authenticate(string $userName, string $userPassword): bool
+    {
+        $identities = $this->buildBindIdentities($userName);
+
+        foreach ($identities as $identity) {
+            try {
+                $this->ldap->bind($identity, $userPassword);
+
+                return true;
+            } catch (\Exception $e) {
+                // Try the next identity format.
+            }
+        }
+
+        return false;
+    }
+
+    public function search(string $filter = '(objectClass=*)'): array
     {
         $this->connect();
 
-        $results = $this->search($this->baseDn, sprintf('(sAMAccountName=%s)', $username));
-
-        if (count($results) === 0) {
-            throw new AuthenticationException('Utilisateur LDAP non trouvé.');
-        }
-
-        $dn = $results[0]->getDn();
-
-        // 3. Bind avec le DN de l'utilisateur et son mot de passe
-        try {
-            $bind = ldap_bind($this->ldapconn, $dn, $password);
-            if (!$bind) {
-                throw new AuthenticationException('Échec de l\'authentification LDAP pour l\'utilisateur.');
-            }
-            return true;
-        } catch (\Exception $e) {
-            return false;
-        }
-    }
-
-    public function search(string $baseDn, string $filter = '(objectClass=*)')
-    {
-        $search_res = ldap_search($this->ldapconn, $baseDn, $filter);
-        if (!$search_res) {
-            return [];
-        }
-
-        $entries = ldap_get_entries($this->ldapconn, $search_res);
-        if ($entries['count'] === 0) {
-            return [];
-        }
-
+        $query = $this->ldap->query($this->baseDn, $filter);
+        $results = $query->execute()->toArray();
         $data = [];
-
-        for ($i = 0; $i < $entries['count']; $i++) {
-            $entry = $entries[$i];
-
-            // Vérifier si le fullname contient "(IRIUM)" ou "test" (insensible à la casse)
-            $fullname = $entries[$i]["name"][0] ?? '';
+        foreach ($results as $entry) {
+            $attributes = $entry->getAttributes();
+            $fullname = $attributes['name'][0] ?? '';
             $fullnameLower = strtolower($fullname);
-
             if (strpos($fullnameLower, '(irium)') !== false || strpos($fullnameLower, 'test') !== false) {
                 continue; // Ignorer cette entrée
             }
-
-            if (isset($entry["givenname"][0])) {
-
-                $rawLoc = $entries[$i]["dn"];
+            if (isset($attributes["givenName"][0])) {
+                $rawLoc = $entry->getDn();
                 $location = $this->findUserLocation($rawLoc);
-
                 $info = [
-                    "firstname"             => $entries[$i]["sn"][0] ?? '',
-                    "lastname"              => $entries[$i]["givenname"][0] ?? '',
+                    "firstname"             => $attributes["sn"][0] ?? '',
+                    "lastname"              => $attributes["givenName"][0] ?? '',
                     "fullname"              => $fullname,
-                    "function"              => $entries[$i]["description"][0] ?? '',
-                    "landline"              => $entries[$i]["physicaldeliveryofficename"][0] ?? '',
-                    "phone"                 => $entries[$i]["telephonenumber"][0] ?? '',
-                    "username"              => $entries[$i]["samaccountname"][0],
-                    "email"                 => $entries[$i]["mail"][0] ?? '',
-                    "mail"                  => $entries[$i]["userprincipalname"][0],
+                    "function"              => $attributes["description"][0] ?? '',
+                    "landline"              => $attributes["physicalDeliveryOfficeName"][0] ?? '',
+                    "phone"                 => $attributes["telephoneNumber"][0] ?? '',
+                    "username"              => $attributes["sAMAccountName"][0],
+                    "email"                 => $attributes["mail"][0] ?? '',
+                    "mail"                  => $attributes["userPrincipalName"][0],
                     "location"              => $location,
                 ];
                 $data = [$info, ...$data];
             }
+            $rawLoc = $entry->getDn();
         }
-
         return $data;
     }
 
     public function findUsers(string $filter = '(objectClass=person)'): array
     {
-        return $this->search($this->baseDn, $filter);
+        return $this->search($filter);
     }
 
     /**
