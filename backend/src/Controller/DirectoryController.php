@@ -9,12 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use ApiPlatform\Core\Annotation\ApiResource;
 
 class DirectoryController extends AbstractController
 {
     /**
-     * @Route("/directory", name="app_directory", methods={"GET"})
+     * @Route("/api/directory", name="app_directory", methods={"GET"})
      */
     public function index(LdapService $ldapService): JsonResponse
     {
@@ -24,7 +23,7 @@ class DirectoryController extends AbstractController
     }
 
     /**
-     * @Route("/directory/export.xlsx", name="app_directory_export", methods={"GET"})
+     * @Route("/api/directory/export.xlsx", name="app_directory_export", methods={"GET"})
      */
     public function export(LdapService $ldapService): Response
     {
