@@ -8,32 +8,40 @@ const Header: React.FC = () => {
   const [userRole, setUserRole] = useState<string>("COLLABORATEUR");
 
   const checkAuth = () => {
-    const savedData = localStorage.getItem('user_data');
-    // On ne vérifie plus le "token" ici car il est peut-être en cookie (Session Backend)
-    
-    if (window.location.pathname === '/login') return;
+  const savedData = localStorage.getItem('user_data');
+  const token = localStorage.getItem('auth_token');
 
-    // Si on a des données utilisateur, on les affiche, peu importe le token
-    if (savedData) {
-      try {
-        const user = JSON.parse(savedData);
-        setUserName(user.fullname || user.username || "Utilisateur");
-        setUserRole(Number(user.role) === 1 ? "ADMIN" : "COLLABORATEUR");
-      } catch (e) {
-        console.error("Erreur de parsing user_data");
-      }
+  if (window.location.pathname === '/login') return;
+
+  if (!savedData || !token) {
+    window.location.href = import.meta.env.VITE_API_URL_LOGOUT || '/login';
+    return;
+  }
+
+  try {
+    const user = JSON.parse(savedData);
+    setUserName(user.fullname || user.username || "Utilisateur");
+
+    // ✅ LOGIQUE DE COMPARAISON PAR CHIFFRE
+    // On force la conversion en nombre au cas où c'est stocké en string "1"
+    if (Number(user.role) === 1) {
+      setUserRole("ADMIN"); // On met le TEXTE pour l'affichage du badge
     } else {
-      // Si rien dans le storage, on remet les valeurs par défaut
-      setUserName("Utilisateur");
       setUserRole("COLLABORATEUR");
     }
-  };
+
+  } catch (e) {
+    // Si le JSON est cassé, on nettoie
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('user_data');
+    window.location.href = import.meta.env.VITE_API_URL_LOGOUT || '/login';
+  }
+};
 
   useEffect(() => {
     checkAuth();
 
     const handleStorageChange = (e: StorageEvent) => {
-      // On réagit dès que le storage change
       if (e.key === 'user_data' || e.key === 'auth_token' || e.key === null) {
         checkAuth();
       }
@@ -50,9 +58,8 @@ const Header: React.FC = () => {
     try {
       const user = savedData ? JSON.parse(savedData) : null;
       if (user?.url_logout) logoutUrl = user.url_logout;
-    } catch (e) { /* fallback */ }
+    } catch (e) { /* fallback sur logoutUrl par défaut */ }
 
-    // Nettoyage complet
     localStorage.removeItem('auth_token');
     localStorage.removeItem('user_data');
     window.location.href = logoutUrl;
