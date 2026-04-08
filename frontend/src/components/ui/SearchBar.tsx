@@ -1,5 +1,6 @@
+import { ChevronDown, RotateCcw, Search } from 'lucide-react';
 import React, { useState } from 'react';
-import { Search, RotateCcw, ChevronDown } from 'lucide-react';
+import { Button } from './Button';
 
 interface SearchBarProps {
   // L'interface pour les props du SearchBar, avec une fonction de rappel pour les changements de recherche
@@ -39,7 +40,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange }) => {
       >
         <div className="flex items-center gap-2">
           <Search size={16} strokeWidth={2.5} className="text-gray-800" />
-          <h2 className="font-bold uppercase tracking-tight text-xs text-gray-800">
+          <h2 className="font-bold uppercase tracking-tight text-xs text-gray-800 mt-1">
             Formulaire de recherche
           </h2>
         </div>
@@ -99,16 +100,28 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange }) => {
 
           {/* 3. BARRE D'ACTIONS */}
           <div className="flex justify-end items-center pt-4 border-t border-gray-100 gap-2">
-            <button 
+            {/* <button 
               onClick={handleClear}
               className="flex items-center justify-center gap-2 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-sm font-bold text-[11px] transition-colors shadow-sm"
             >
               <RotateCcw size={14} /> EFFACER
-            </button>
+            </button> */}
+            <Button
+              variant="secondary"
+              icon={<RotateCcw size={14} />}
+              onClick={handleClear}
+              className='cursor-pointer'
+            >EFFACER</Button>
 
-            <button className="flex items-center justify-center gap-2 bg-infranet hover:bg-[#e5ac00] text-gray-800 px-6 py-2 rounded-sm font-black text-[11px] transition-colors shadow-sm uppercase">
+            {/* <button className="flex items-center justify-center gap-2 bg-infranet hover:bg-[#e5ac00] text-gray-800 px-6 py-2 rounded-sm font-black text-[11px] transition-colors shadow-sm uppercase">
               <Search size={14} strokeWidth={2.5} /> Recherche
-            </button>
+            </button> */}
+            <Button
+              variant="primary"
+              icon={<Search size={14} strokeWidth={2.5} />}
+              onClick={() => handleChange(user, loc, email, func)}
+              className='cursor-pointer'
+            >RECHERCHE</Button>
           </div>
 
         </div>
