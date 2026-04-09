@@ -12,7 +12,7 @@ export const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, // Important pour cookies (refreshToken)
+  withCredentials: false, // Important pour cookies (refreshToken)
 });
 
 apiClient.interceptors.request.use(
