@@ -1,6 +1,10 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { useEffect } from 'react';
+<<<<<<< Updated upstream
 import { Outlet, useLocation } from 'react-router-dom';
+=======
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
+>>>>>>> Stashed changes
 import Breadcrumb from '../ui/Breadcrumb';
 import { Loader } from '../ui/Loader';
 import Footer from './Footer';
@@ -29,8 +33,13 @@ export const ProtectedLayout = () => {
 	}
 
 	if (!isAuthenticated) {
+<<<<<<< Updated upstream
 		window.location.href = import.meta.env.VITE_API_URL_HOME || '/'
 	}
+=======
+  return <Navigate to="/access-denied" replace />;
+}
+>>>>>>> Stashed changes
 
 	return (
 		<>

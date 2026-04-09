@@ -13,8 +13,15 @@ const Footer: React.FC = () => {
             <p className="text-xl tracking-tighter uppercase italic">Documentation</p>
             <div className="mt-3 space-y-1 normal-case tracking-normal">
               <div className="flex items-center gap-2 text-sm text-gray-600 font-medium hover:text-infranet cursor-pointer transition-colors">
+<<<<<<< Updated upstream
                 <span className="w-1.5 h-1.5 bg-infranet rounded-full"></span>
                 Documentation technique
+=======
+                <a href="\docs\documentation_annuaire_ldap.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-600 font-medium hover:text-infranet cursor-pointer transition-colors">
+                  <span className="w-1.5 h-1.5 bg-infranet rounded-full"></span>
+                  Documentation technique
+                </a>
+>>>>>>> Stashed changes
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-600 font-medium hover:text-infranet cursor-pointer transition-colors">
                 <span className="w-1.5 h-1.5 bg-gray-300 rounded-full"></span>
