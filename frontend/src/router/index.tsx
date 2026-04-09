@@ -4,10 +4,7 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 const LdapPage = lazy(() => import('@/pages/ldap/LdapPage'));
-<<<<<<< Updated upstream
-=======
 const AccessDenied = lazy(() => import ('@/pages/AccessDenied'));
->>>>>>> Stashed changes
 
 const LazyPage = ({ children }: { children: React.ReactNode }) => (
 	<Suspense fallback={<Loader label='Chargement ...' />}>{children}</Suspense>
@@ -15,15 +12,12 @@ const LazyPage = ({ children }: { children: React.ReactNode }) => (
 
 export const router = createBrowserRouter([
 	{
-<<<<<<< Updated upstream
-=======
 		
 		path: '/access-denied',
 		element: <LazyPage><AccessDenied /></LazyPage>,
 	},
 	{
 		
->>>>>>> Stashed changes
 		element: <ProtectedLayout />,
 		children: [
 			{
@@ -32,8 +26,4 @@ export const router = createBrowserRouter([
 			}
 		]
 	}
-<<<<<<< Updated upstream
 ]);
-=======
-]);
->>>>>>> Stashed changes
