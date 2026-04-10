@@ -8,6 +8,7 @@ import {
     Italic,
     List,
     ListOrdered,
+    PenLine,
     X,
 } from "lucide-react";
 import { useState } from "react";
@@ -48,7 +49,7 @@ const ManualEditor = ({ onClose }: ManualEditorProps) => {
                 <div style="font-size: 14px; line-height: 1.8; color: #374151;">
                     ${editorHtml}
                 </div>
-                <div style="margin-top: 60px; pt-20px; border-top: 1px solid #f3f4f6; font-size: 9px; color: #d1d5db; text-align: center;">
+                <div style="margin-top: 60px; border-top: 1px solid #f3f4f6; font-size: 9px; color: #d1d5db; text-align: center;">
                     Généré numériquement le ${new Date().toLocaleDateString('fr-FR')}
                 </div>
             </div>
@@ -56,22 +57,13 @@ const ManualEditor = ({ onClose }: ManualEditorProps) => {
 
         try {
             const html2pdf = (await import('html2pdf.js')).default;
-            
-            const pdfOptions: any = {
+            await html2pdf().set({
                 margin: [15, 15, 15, 15],
                 filename: 'Manuel_utilisateur.pdf', 
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { 
-                    scale: 2, 
-                    useCORS: true, 
-                    letterRendering: true,
-                    scrollX: 0,
-                    scrollY: 0
-                },
+                html2canvas: { scale: 2, useCORS: true },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-
-            await html2pdf().set(pdfOptions).from(element).save();
+            }).from(element).save();
         } catch (error) {
             console.error("Erreur PDF:", error);
             alert("Erreur lors de la génération.");
@@ -91,14 +83,14 @@ const ManualEditor = ({ onClose }: ManualEditorProps) => {
         <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/70 backdrop-blur-sm p-0 sm:p-4">
             <div className="bg-white w-full sm:max-w-4xl rounded-t-xl sm:rounded-sm shadow-2xl flex flex-col h-[95dvh] sm:h-[90vh] border border-gray-300 overflow-hidden">
 
-                {/* Header responsive */}
+                {/* Header */}
                 <div className="flex items-center justify-between px-4 sm:px-6 py-4 bg-[#1f2937] border-b-4 border-[#fbbb01]">
                     <div className="flex items-center gap-3">
                         <div className="bg-[#fbbb01] p-1.5 rounded-sm">
-                            <FileDown size={18} className="text-[#1f2937]" />
+                            <PenLine size={18} className="text-[#1f2937]" /> {/* ✅ crayon */}
                         </div>
                         <h2 className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-white">
-                            Editeur de manuel
+                            Éditeur de manuel
                         </h2>
                     </div>
                     <button
@@ -109,25 +101,28 @@ const ManualEditor = ({ onClose }: ManualEditorProps) => {
                     </button>
                 </div>
 
-                {/* Zone Titre responsive */}
+                {/* Champ Titre */}
                 <div className="px-6 sm:px-8 pt-6 sm:pt-8 pb-4 bg-gray-50/50">
-                    <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-[#fbbb01] mb-2 text-center sm:text-left">Titre du document</p>
+                    <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-[#fbbb01] mb-2">
+                        Titre du document
+                    </p>
                     <input
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Ex: Procédure d'accès..."
-                        className="w-full bg-white border-b-2 border-gray-200 focus:border-[#fbbb01] px-0 py-2 sm:py-3 text-base sm:text-lg font-bold outline-none transition-all placeholder:text-gray-300 text-center sm:text-left"
+                        className="w-full bg-white border-b-2 border-gray-200 focus:border-[#fbbb01] px-0 py-2 sm:py-3 text-base sm:text-lg font-bold outline-none transition-all placeholder:text-gray-300"
                     />
                 </div>
 
-                {/* Toolbar scrollable sur mobile */}
-                <div className="flex items-center gap-1 px-4 sm:px-8 py-3 border-b border-gray-100 bg-white overflow-x-auto no-scrollbar">
+                {/* Toolbar */}
+                <div className="flex items-center gap-1 px-4 sm:px-8 py-3 border-b border-gray-100 bg-white overflow-x-auto">
                     {tools.map((btn, i) => (
                         <button
                             key={i}
                             type="button"
                             onClick={btn.action}
+                            title={btn.label}
                             className={`p-2.5 rounded-sm shrink-0 transition-all ${
                                 btn.active 
                                 ? 'bg-[#fbbb01] text-[#1f2937] shadow-sm' 
@@ -139,14 +134,12 @@ const ManualEditor = ({ onClose }: ManualEditorProps) => {
                     ))}
                 </div>
 
-                {/* Editeur */}
+                {/* Éditeur */}
                 <div className="flex-1 overflow-y-auto bg-white px-6 sm:px-8 py-4 sm:py-6">
-                    <div className="max-w-none min-h-full">
-                        <EditorContent editor={editor} />
-                    </div>
+                    <EditorContent editor={editor} />
                 </div>
 
-                {/* Footer Action Responsive */}
+                {/* Footer */}
                 <div className="px-6 sm:px-8 py-5 bg-gray-50 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest text-center sm:text-left">
                         Déposer dans{' '}
@@ -154,7 +147,6 @@ const ManualEditor = ({ onClose }: ManualEditorProps) => {
                             public/docs/
                         </code>
                     </p>
-                    
                     <div className="flex flex-row-reverse sm:flex-row gap-3 w-full sm:w-auto">
                         <button
                             onClick={onClose}

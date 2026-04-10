@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import Breadcrumb from '../ui/Breadcrumb';
 import { Loader } from '../ui/Loader';
+import ScrollToTop from '../ui/ScrollToTop';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -41,6 +42,8 @@ export const ProtectedLayout = () => {
 					<Outlet />
 				</div>
 				<Footer />
+
+				<ScrollToTop />
 			</div>
 		</>
 	);

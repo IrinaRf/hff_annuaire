@@ -1,4 +1,5 @@
-import logoInfranet from '@/assets/images/logoHFF.jpg';
+import logoInfranet from '@/assets/images/logoHFF.png';
+import { Link } from 'react-router-dom'; 
 import { useAuth } from '@/contexts/AuthContext';
 import { UserRole } from '@/types';
 import { ChevronDown, LogOut, ShieldCheck, User } from 'lucide-react';
@@ -26,17 +27,24 @@ const Header: React.FC = () => {
 		logout();
 	};
 
-	return (
-		<header className="bg-[#1f2937] shadow-md p-4 flex justify-between items-center border-b-4 border-infranet z-50 font-sans sticky top-0">
-			<div className="flex items-center">
-				<img
-					src={logoInfranet}
-					alt="Logo Infranet"
-					className="h-12 w-auto object-contain"
-				/>
-			</div>
+return (
+        <header className="bg-[#1f2937] shadow-md p-4 flex justify-between items-center border-b-4 border-infranet z-50 font-sans sticky top-0">
+            <div className="flex items-center">
+                {/* Logo cliquable qui pointe vers la racine */}
+                <Link 
+                    to="/" 
+                    className="transition-all hover:opacity-80 active:scale-95"
+                    title="Retour à l'accueil"
+                >
+                    <img
+                        src={logoInfranet}
+                        alt="Logo Infranet"
+                        className="h-12 w-auto object-contain"
+                    />
+                </Link>
+            </div>
 
-			<div className="relative">
+            <div className="relative">
 				<button
 					onClick={() => setIsOpen(!isOpen)}
 					className="flex items-center gap-3 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-sm border border-gray-600 transition-all shadow-inner"
