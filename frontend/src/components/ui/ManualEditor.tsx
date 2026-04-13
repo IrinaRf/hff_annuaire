@@ -21,7 +21,7 @@ import {
     X,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import type { Paragraph as DocxParagraph, Table as DocxTableType, TextRun} from "docx";
+import type { Paragraph as DocxParagraph, Table as DocxTableType, TextRun as DocxTextRun } from "docx";
 
 interface ManualEditorProps {
     onClose: () => void;
@@ -35,6 +35,8 @@ const ManualEditor = ({ onClose, storageKey = STORAGE_KEY_DEFAULT }: ManualEdito
     const [title, setTitle] = useState("");
     const [lastSaved, setLastSaved] = useState<Date | null>(null);
     const [saveIndicator, setSaveIndicator] = useState(false);
+    const [linkMode, setLinkMode] = useState(false);
+    const [linkUrl, setLinkUrl] = useState("");
 
     // ── Charger le brouillon sauvegardé ─────────────────────────────────────
     const loadDraft = useCallback(() => {
@@ -118,19 +120,35 @@ const ManualEditor = ({ onClose, storageKey = STORAGE_KEY_DEFAULT }: ManualEdito
     // ── Insérer un lien ──────────────────────────────────────────────────────
     const handleLink = () => {
         if (!editor) return;
-        const prev = editor.getAttributes("link").href ?? "";
-        const url = window.prompt("URL du lien :", prev);
-        if (url === null) return; // annulé
-        if (url === "") {
+        if (linkMode) {
+            // Mode lien actif → confirmer
+            confirmLink();
+        } else if (editor.isActive("link")) {
+            // Curseur sur un lien existant → supprimer le lien
             editor.chain().focus().extendMarkRange("link").unsetLink().run();
         } else {
-            editor
-                .chain()
-                .focus()
-                .extendMarkRange("link")
-                .setLink({ href: url })
-                .run();
+            // Activer le mode saisie
+            setLinkUrl("");
+            setLinkMode(true);
+            setTimeout(() => editor.chain().focus().run(), 50);
         }
+    };
+
+    const confirmLink = () => {
+        if (!editor) return;
+        const url = linkUrl.trim();
+        if (url) {
+            const fullUrl = url.startsWith("http") ? url : `https://${url}`;
+            editor.chain().focus().extendMarkRange("link").setLink({ href: fullUrl }).run();
+        }
+        setLinkMode(false);
+        setLinkUrl("");
+    };
+
+    const cancelLink = () => {
+        setLinkMode(false);
+        setLinkUrl("");
+        editor?.chain().focus().run();
     };
 
     // ── Insérer un tableau ───────────────────────────────────────────────────
@@ -278,7 +296,7 @@ const ManualEditor = ({ onClose, storageKey = STORAGE_KEY_DEFAULT }: ManualEdito
                 }
 
                 // Paragraphe générique avec gras/italique inline
-                const runs: TextRun[] = [];
+                const runs: DocxTextRun[] = [];
                 el.childNodes.forEach((node) => {
                     if (node.nodeType === Node.TEXT_NODE) {
                         runs.push(new TextRun({ text: node.textContent ?? "" }));
@@ -366,10 +384,11 @@ const ManualEditor = ({ onClose, storageKey = STORAGE_KEY_DEFAULT }: ManualEdito
             active: () => false,
         },
         {
-            icon: <LinkIcon size={15} />, label: "Lien (sélectionner du texte d'abord)",
+            icon: <LinkIcon size={15} />, label: linkMode ? "Confirmer le lien" : "Insérer un lien",
             action: handleLink,
-            active: () => editor?.isActive("link"),
+            active: () => linkMode || editor?.isActive("link"),
         },
+
     ];
 
     return (
@@ -453,15 +472,16 @@ const ManualEditor = ({ onClose, storageKey = STORAGE_KEY_DEFAULT }: ManualEdito
                                 key={i}
                                 type="button"
                                 onMouseDown={(e) => {
-                                    // Empêche la perte de focus sur l'éditeur
                                     e.preventDefault();
                                     btn.action();
                                 }}
                                 title={btn.label}
                                 className={`p-2 rounded-sm shrink-0 transition-all ${
-                                    btn.active()
-                                        ? "bg-[#fbbb01] text-[#1f2937] shadow-sm"
-                                        : "text-gray-400 hover:bg-gray-100 hover:text-gray-700"
+                                    "danger" in btn && btn.danger
+                                        ? "text-red-400 hover:bg-red-50 hover:text-red-600"
+                                        : btn.active()
+                                            ? "bg-[#fbbb01] text-[#1f2937] shadow-sm"
+                                            : "text-gray-400 hover:bg-gray-100 hover:text-gray-700"
                                 }`}
                             >
                                 {btn.icon}
@@ -469,6 +489,53 @@ const ManualEditor = ({ onClose, storageKey = STORAGE_KEY_DEFAULT }: ManualEdito
                         )
                     )}
                 </div>
+
+                {/* ── Barre URL lien ── */}
+                {linkMode && (
+                    <div className="flex items-center gap-2 px-4 sm:px-6 py-2.5 bg-blue-50 border-b border-blue-200 animate-in slide-in-from-top-1">
+                        <LinkIcon size={13} className="text-blue-500 shrink-0" />
+                        <input
+                            autoFocus
+                            type="text"
+                            value={linkUrl}
+                            onChange={(e) => setLinkUrl(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") confirmLink();
+                                if (e.key === "Escape") cancelLink();
+                            }}
+                            placeholder="https://example.com"
+                            className="flex-1 bg-transparent text-sm text-blue-800 placeholder:text-blue-300 outline-none font-mono"
+                        />
+                        <button
+                            onMouseDown={(e) => { e.preventDefault(); confirmLink(); }}
+                            className="text-[10px] font-black uppercase tracking-widest text-blue-600 hover:text-blue-800 px-2 py-1 rounded hover:bg-blue-100 transition-all"
+                        >
+                            OK
+                        </button>
+                        <button
+                            onMouseDown={(e) => { e.preventDefault(); cancelLink(); }}
+                            className="text-[10px] font-black uppercase tracking-widest text-blue-400 hover:text-blue-600 px-2 py-1 rounded hover:bg-blue-100 transition-all"
+                        >
+                            Annuler
+                        </button>
+                    </div>
+                )}
+
+                {/* ── Bouton suppression tableau contextuel ── */}
+                {editor?.isActive("table") && (
+                    <div className="flex items-center justify-end px-4 sm:px-6 py-1.5 bg-red-50 border-b border-red-100">
+                        <button
+                            onMouseDown={(e) => {
+                                e.preventDefault();
+                                editor.chain().focus().deleteTable().run();
+                            }}
+                            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-red-400 hover:text-red-600 transition-colors"
+                        >
+                            <span>✕</span>
+                            <span>Supprimer le tableau</span>
+                        </button>
+                    </div>
+                )}
 
                 {/* ── Éditeur ── */}
                 <div className="flex-1 overflow-y-auto bg-white px-6 sm:px-8 py-4 sm:py-6
