@@ -22,6 +22,7 @@
     "@tiptap/react": "^3.22.3",
     "@tiptap/starter-kit": "^3.22.3",
     "axios": "^1.14.0",
+    "docx": "^9.6.1",
     "exceljs": "^4.4.0",
     "html2pdf.js": "^0.14.0",
     "jwt-decode": "^4.0.0",
