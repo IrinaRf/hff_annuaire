@@ -1,6 +1,6 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { useEffect } from 'react';
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Breadcrumb from '../ui/Breadcrumb';
 import { Loader } from '../ui/Loader';
 import ScrollToTop from '../ui/ScrollToTop';
@@ -9,13 +9,12 @@ import Header from './Header';
 
 export const ProtectedLayout = () => {
 	const { isAuthenticated, isLoading, revalidateAuth } = useAuth();
-	const location = useLocation();
 
 	useEffect(() => {
+		if (isLoading || isAuthenticated) return;
 		revalidateAuth();
-	}, [location.pathname]);
-	
-	
+	}, [isAuthenticated, isLoading]);
+
 	if (isLoading) {
 		return (
 			<div className="flex min-h-screen items-center justify-center">
@@ -28,10 +27,6 @@ export const ProtectedLayout = () => {
 			</div>
 		);
 	}
-
-	if (!isAuthenticated) {
-  return <Navigate to="/access-denied" replace />;
-}
 
 	return (
 		<>

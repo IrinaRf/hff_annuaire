@@ -105,7 +105,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
 	}, []);
 
 	const removeAuth = () => {
-		setUser(null);
 		localStorage.removeItem(AUTH_STORAGE_KEY.user);
 		localStorage.removeItem(AUTH_STORAGE_KEY.accessToken);
 	};
@@ -116,11 +115,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
 
 	const revalidateAuth = async () => {
-		const res = await authApi.checkSession();
-		if (!res.user || res.error) {
-			console.log(res);
-			return;
-		}
+		if (user) return;
+		const homeUrl = import.meta.env.VITE_API_URL_HOME || 'http://localhost:3000/Hffintranet';
+		window.location.replace(`${homeUrl}sso/annuaire`);
 	}
 
 	const value: AuthContextType = {

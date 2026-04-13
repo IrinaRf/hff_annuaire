@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/Button';
 import { Loader } from '@/components/ui/Loader';
+import { useAuth } from '@/contexts/AuthContext';
 import { ldapApi, type LdapUser } from '@/lib/api';
+import { UserRole } from '@/types';
 import ExcelJS from 'exceljs';
 import {
 	ChevronLeft,
@@ -9,6 +11,7 @@ import {
 	MapPin,
 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const ITEMS_PER_PAGE = 50;
 
@@ -33,12 +36,17 @@ const defaultFilters: Filters = {
 const LdapList: React.FC<LdapListProps> = ({
 	filters = defaultFilters,
 }) => {
+	const { user, removeAuth } = useAuth();
 	const [users, setUsers] = useState<LdapUser[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string | null>(null);
 	const [currentPage, setCurrentPage] = useState(1);
 
 	const API_URL = import.meta.env.VITE_API_URL;
+
+	if (user && user.role !== UserRole.ADMIN) {
+		return <Navigate to={'/access-denied'} replace />;
+	}
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -73,6 +81,7 @@ const LdapList: React.FC<LdapListProps> = ({
 
 				setLoading(false);
 			}
+			removeAuth();
 		};
 		fetchData();
 	}, [API_URL]); // Ajout de API_URL en dépendance par sécurité
@@ -172,7 +181,7 @@ const LdapList: React.FC<LdapListProps> = ({
 	};
 
 	if (loading) {
-		return <Loader label='Chargement des annuaires...' />;
+		return <Loader label="Chargement des annuaires..." />;
 	}
 
 	const TABLE_ROWS = [
